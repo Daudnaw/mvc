@@ -1,0 +1,40 @@
+.in img {
+    height: 500px;
+    width: 500px;
+}
+
+.lucky-images img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+img:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+img:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+img:nth-child(3) {
+    transform: rotate(100deg);
+}
+
+img:nth-child(4) {
+    transform: rotate(150deg);
+}
+
+img:hover {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}

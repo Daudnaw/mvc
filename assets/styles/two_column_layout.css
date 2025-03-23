@@ -1,0 +1,49 @@
+/** two_column_layout.css */
+
+.two-col-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width:900px;
+    margin: 0 auto;
+}
+
+.two-col-layout > .main {
+    width: calc(100% / 16 * 12); /* 12/16 width */
+}
+
+.two-col-layout > .aside {
+    width: calc(100% / 16 * 4); /* 4/16 width */
+}
+
+.aside {
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 24px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.aside h4 {
+    border-bottom: 1px solid #ccc;
+    color: green;
+    word-wrap: break-word;
+}
+
+.aside ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.aside a {
+    color: blue;
+}
+
+.aside a:hover {
+    text-decoration: none;
+    background-color: chocolate;
+    color: white;
+}
