@@ -1,6 +1,6 @@
 
-![kursen](../public/img/mvc.png)
-l
+![kursen](../img/mvc.png)
+k
 ## Klona repot till github
 To clone this course repo to github we have to follow the following stuff
 
