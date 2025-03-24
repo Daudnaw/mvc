@@ -1,5 +1,5 @@
 
-![MVC Image](public/img/mvc.png)
+![MVC Image](public/img/glider.png)
 l
 ## Klona repot till github
 To clone this course repo to github we have to follow the following stuff
