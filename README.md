@@ -1,5 +1,5 @@
 
-![kursen](%assets_url%/images/mvc.png)
+![kursen](%assets_url%/images/me.png)
 
 ## Klona repot till github
 To clone this course repo to github we have to follow the following stuff
