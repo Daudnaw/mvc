@@ -18,7 +18,12 @@ class LuckyControllerJson
     {
 
         $data = [
-            'Route_1' => '/api/quote'
+            'Route_1' => '/api/quote',
+            'Route_2' => '/',
+            'Route_3' => '/about',
+            'Route_4' => '/report',
+            'Route_5' => 'lucky',
+
         ];
 
         $response = new JsonResponse($data);
@@ -37,6 +42,7 @@ class LuckyControllerJson
         'Beautiful thing about democracy is minorities are never right'];
         $randKey = array_rand($quote);
         $randquote = $quote[$randKey];
+        date_default_timezone_set('Europe/Stockholm');
         $data = [
             'quote' => $randquote,
             'date' => date('Y-m-d'),
