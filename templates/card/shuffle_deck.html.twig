@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}this is not{% endblock %}
+
+{% block body %}
+    <h1>A deck</h1>
+    <p>Here you go with brand new Deck</p>
+
+<div class="deck-container">
+    {% for value in shuffleDeck %}
+        <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
+            {{ value }}
+        </span>
+    {% endfor %}
+</div>
+
+{% endblock %}
+

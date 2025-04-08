@@ -1,0 +1,48 @@
+.deck-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.deck {
+    width: 60px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+.deck:hover, .shuffle:hover {
+    background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 600px) {
+    .deck {
+        width: 45px;
+        height: 70px;
+    }
+
+    .deck-container {
+        padding: 10px;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}this is not{% endblock %}
+
+{% block body %}
+    <h1>RemainingCards</h1>
+    <p>Remaining cards in the Deck {{count}}</p>
+
+<div class="deck-container">
+    {% if drawCard is iterable %}
+        {% for value in drawCard %}
+            <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
+                {{ value }}
+            </span>
+        {% endfor %}
+    {% else %}
+        <span class="shuffle {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
+            {{ drawCard }}
+        </span>
+    {% endif %}
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,41 @@
+.navbar {
+    background-color: rgb(45, 35, 121);
+    border-top: 4px solid #4F5B93;
+    border-bottom: 4px solid #4F5B93;
+    text-align: center;
+    font-size: 1.2em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    color: black;
+    background-color: gold;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    border-right: 1px solid #bbb;
+}
+
+.navbar li:last-child {
+    border-right: none;
+}
+
+.navbar .selected {
+    background-color: blue;
+}

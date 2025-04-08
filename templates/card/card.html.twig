@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Cards{% endblock %}
+
+{% block body %}
+    <h1>Cards</h1>
+    <p>Lniks to the subpages </p>
+
+<ul>
+<li>berätta strukturen på dina klasser och deras relation</li>
+<li>rital en umldiaggram och bifoga här</li>
+</ul>
+<ul>
+    <li><a href="{{ path('card_deck') }}">A new card deck</li>
+    <li><a href="{{ path('shuffle') }}">Shuffle the deck</li>
+    <li><a href="{{ path('deck_draw') }}">Draw a Card</li>
+    <li><a href="{{ path('num_draw', {num: 5}) }}">Draw five or use querrystring</li>
+    {# <li><a href="{{ path('pig_init_get') }}">Game Pig Start</li>#}
+</ul>
+
+{% endblock %}
