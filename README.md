@@ -15,4 +15,4 @@ To clone this course repo to github we have to follow the following stuff
 - You navigate to courese repo in this case `dbwebb-kurser/mvc/me/report`
 - To start the server you run the command ` php -S localhost:8888 -t public  ` which starts the server
 - Then you are ready to access the webbpage
-- Mind you that after any changes in CSS or adding an images you have to `npm run build` so that your changes can be uppdated to publik
+- Mind you that after any changes in CSS or adding an images you have to `npm run build` so that your changes can be uppdated to public
