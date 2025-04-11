@@ -46,7 +46,37 @@
                 Grunden i symfony liksom om bilder, twig och router. Grundläggande intro till class i objektorienterad PHP.
             </p>
             <h2 id="kmom02">kmom02</h2>
-
+            <p>
+                Med hjälp av arv kan en klass ärva metoder och medlemsvariabler från basklassen så att subklass kan specialisera basklass genom att återanvända koden.
+                Komposition betyder att en klass innehåller andra objekt från en annan klass som delar sin funktionalitet. Tex. en die och en hand. En hand kan innehålla flera die
+                därmed en hand är en komposition av die.
+            </p>
+            <p>
+                Ett trait är som ett multipelarv som kan återanvändas i flera olika klasser. Jag förstår det som att man kan definiera en funktion som en modul som kan anropas från
+                samma källa i olika moduler. Men i objektorienterad blir det alltså trait så att samma kod kan användas (use) i flera andra klasser utan arv. Interface är ett löfte
+                som tvingar en klass att implementera eller erbjuda metoder. Med hjälp av interface vet man vad en klass kommer att kunna hantera.
+            </p>
+            <p>
+                Jag har tre klasser för att lösa uppgiften: en som skapar en card och en som skapar grafisk presentation av kortet genom att ersätta exempelvis “hearts” mot symbolen
+                av hearts. Jag har en tredje klass Deck som då loopar genom två arrays och skapar en hel deck. CardGraphic har Card som basklass och Deck är en composition av
+                CardGraphic.
+            </p>
+            <p>
+                För att lösa uppgiften och uppfylla krav skapar jag en deck när landningssida för den här uppgiften öppnas. Det görs endast om det inte finns en befintlig deck och
+                mha. det kan man få sin resterande deck i länken card/deck. Om man vill skapa en ny deck, då får man trycka på card/shuffle. När det gäller draw ett eller flera kort
+                använder jag mig av metoder som är definierade i Deck klass. Jag är typ nöjd med min presentation av kortlek. Jag utnyttjar twig och kollar om kommande string har
+                en viss value för att tilldela css klass så att jag kan få hjärta och rutor röda osv. Det hade kunnat lösa snyggare bilder tycker jag. Jag tror det funkar nu men
+                det kan förbättras.När det gäller koden i klasser evaluerar jag med min begränsad kunskap att det ser bra ut. Jag kanske har en annan syn på det om någon vecka då
+                får jag ändra koden enligt det.
+            </p>
+            <p>
+                Tankesätt och arbetssätt skiljer väl inte så mycket från tidigare kurser trots att det är viss skillnad i strukturen. Jag upplever jobbet i symfony med applikationskod
+                som en blandning av arbetet i webtec (exempelvis skapa olika sidor/views osv.) och arbetet i design (Ramverk Pico som också innehöll en del twig filer).
+            </p>
+            <h3>TIL</h3>
+            <p>
+                Mer om objektorienterad PHP: arv (i praktik), komposition (i praktik), trait (i teori) och interface (i teori). Namespace och hur man startar session i symfony.
+            </p>
             <h2 id="kmom03">kmom03</h2>
             
             <h2 id="kmom04">kmom04</h2>
