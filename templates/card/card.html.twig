@@ -4,18 +4,22 @@
 
 {% block body %}
     <h1>Cards</h1>
-    <p>Lniks to the subpages </p>
+    <p>Down here are som links to check kmom02 </p>
 
 <ul>
-<li>berätta strukturen på dina klasser och deras relation</li>
-<li>rital en umldiaggram och bifoga här</li>
+<li>Jag har totalt tre klasser. Card, CardGraphic och Deck. CardGraphic är subklass till Card och Deck är en komposition av CardGraphic.</li>
+<li>Arv mellan Card och CardGraphic.</li>
+<li>Komposition mellan CardGraphic och Deck.</li>
 </ul>
+<figure class="figure center">
+                <img src="{{ asset('build/images/uml.png') }}" width="400" class="in" alt="Bild på kursen">
+                <figcaption>UML Cards</figcaption>
+            </figure>
 <ul>
-    <li><a href="{{ path('card_deck') }}">A new card deck</li>
+    <li><a href="{{ path('card_deck') }}">Your Deck</li>
     <li><a href="{{ path('shuffle') }}">Shuffle the deck</li>
     <li><a href="{{ path('deck_draw') }}">Draw a Card</li>
     <li><a href="{{ path('num_draw', {num: 5}) }}">Draw five or use querrystring</li>
-    {# <li><a href="{{ path('pig_init_get') }}">Game Pig Start</li>#}
 </ul>
 
 {% endblock %}
