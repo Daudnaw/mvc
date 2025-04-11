@@ -18,13 +18,48 @@ class LuckyControllerJson
     {
 
         $data = [
-            'Route_1' => '/api/quote',
-            'Route_2' => '/',
-            'Route_3' => '/about',
-            'Route_4' => '/report',
-            'Route_5' => 'lucky',
-
+            [
+                'route' => '/api/quote',
+                'description' => 'This route gives you a random quote and current time and date',
+            ],
+            [
+                'route' => '/',
+                'description' => 'Takes you to the home of my page',
+            ],
+            [
+                'route' => '/about',
+                'description' => 'This leads you to a page with some information about courses',
+            ],
+            [
+                'route' => '/report',
+                'description' => 'This page contains redovisningstext for all kmom',
+            ],
+            [
+                'route' => '/lucky',
+                'description' => 'This gives you a random number and some dancing images',
+            ],
+            [
+                'route' => '/card',
+                'description' => 'Explains class relations and uml diagram with links to subpages',
+            ],
+            [
+                'route' => '/card/deck',
+                'description' => 'You get a sorted deck of Cards according to color and numbers',
+            ],
+            [
+                'route' => '/card/deck/shuffle',
+                'description' => 'Gives you a mixed new deck of cards.',
+            ],
+            [
+                'route' => '/card/deck/draw',
+                'description' => 'Shows a drawn card and number of cards left in the deck',
+            ],
+            [
+                'route' => '/card/deck/draw/:number',
+                'description' => 'Draws and shows :number of cards and how many cards left in the game',
+            ],
         ];
+        
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
