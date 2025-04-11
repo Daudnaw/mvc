@@ -14,7 +14,7 @@
             </span>
         {% endfor %}
     {% else %}
-        <span class="shuffle {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
+        <span class="deck {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
             {{ drawCard }}
         </span>
     {% endif %}
