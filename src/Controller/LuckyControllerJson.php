@@ -59,7 +59,7 @@ class LuckyControllerJson
                 'description' => 'Draws and shows :number of cards and how many cards left in the game',
             ],
         ];
-        
+
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
