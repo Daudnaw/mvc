@@ -1,0 +1,49 @@
+
+
+{% extends "base.html.twig" %}
+
+{% block title %}TwentyOne{% endblock %}
+
+{% block body %}
+    <h1>TwentyOne</h1>
+    <p>Here is some value of the card {{playerTotal}}</p>
+
+<ul>
+<li>click the linkt to play thgggggggggggggggggggggggggggggggggg</li>
+</ul>
+
+<div class="deck-container">
+    {% if drawCard is iterable %}
+        {% for value in drawCard %}
+            <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
+                {{ value }}
+            </span>
+        {% endfor %}
+    {% else %}
+        <span class="deck {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
+            {{ drawCard }}
+        </span>
+    {% endif %}
+
+{% if playerTotal < 21 %}
+    <form method="post" action="">
+        <p>
+            <input type="submit" name="draw" value="Draw"
+                onClick="this.form.action='{{ path('game_draw') }}';"
+            >
+            <input type="submit" name="bank" value="bank"
+                onClick="this.form.action='{{ path('game_bank') }}';"
+            >
+        </p>
+    </form>
+{% endif %}
+</div>
+
+{{ include('flash.html.twig') }}
+
+<ul>
+    <li><a href="{{ path('game') }}">Start a new game</li>
+</ul>
+
+{% endblock %}
+
