@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}TwentyOne{% endblock %}
+
+{% block body %}
+    <h1>TwentyOne</h1>
+    <p>Here is some information------ </p>
+
+<ul>
+<li>click the linkt to play the game</li>
+</ul>
+
+<ul>
+    <li><a href="{{ path('game_play') }}">Play Game</li>
+</ul>
+
+{% endblock %}

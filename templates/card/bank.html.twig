@@ -1,0 +1,49 @@
+
+
+{% extends "base.html.twig" %}
+
+{% block title %}TwentyOne{% endblock %}
+
+{% block body %}
+    <h1>Welcome to TwentyOne</h1>
+
+    <h2>Players hand</h2>
+    <p>Players totalPoints: {{playerTotal}}</p>
+    <div class="deck-container">
+        {% if drawCard is iterable %}
+            {% for value in drawCard %}
+                <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
+                    {{ value }}
+                </span>
+            {% endfor %}
+        {% else %}
+            <span class="deck {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
+                {{ drawCard }}
+            </span>
+        {% endif %}
+    </div>
+
+    <h2>Banks hand</h2>
+    <p>Bankss totalPoints: {{bankTotal}}</p>
+    <div class="deck-container">
+        {% if bankCards is iterable %}
+            {% for value in bankCards %}
+                <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
+                    {{ value }}
+                </span>
+            {% endfor %}
+        {% else %}
+            <span class="deck {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
+                {{ drawCard }}
+            </span>
+        {% endif %}
+    </div>
+
+    {{ include('flash.html.twig') }}
+
+    <ul>
+        <li><a href="{{ path('game') }}">Start a new game</li>
+    </ul>
+
+{% endblock %}
+
