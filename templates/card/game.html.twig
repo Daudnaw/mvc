@@ -4,11 +4,18 @@
 
 {% block body %}
     <h1>TwentyOne</h1>
-    <p>Here is some information------ </p>
-
-<ul>
-<li>click the linkt to play the game</li>
-</ul>
+    <p>
+        My game is called 21. When you click on the linke called Play Game you shall land on play-page. There are two players in the game. One is
+        you the player and the other is bank. You have to draw a first card after that you can let the bank draw its card but if you do that than
+        game shall end with a winner. You can chose to draw more than one card and purpose is to get so close to 21 as possible. If you get more
+        than 21 points than you lose even the bank has not played its turn. If you get 21 than you win and game ends.
+    </p>
+    <p>
+        If you chose to stop somewhere before 21 and than let the bank play then bank can win in two cases. If bank gets same points as you or
+        greater than yours. If bank gets more than 21 than bank loses too and you win. Bank is played by computer so you donot need to draw any
+        cards. Take your turn and if you want to hold your turn and let the bank play then just click the bankPlay. In all cases described above
+        ends the game always by declaring a winner and than you can restart the game by clicking the link ”start new game”.
+    </p>
 
 <ul>
     <li><a href="{{ path('game_play') }}">Play Game</li>
