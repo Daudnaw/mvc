@@ -24,6 +24,7 @@
             {{ drawCard }}
         </span>
     {% endif %}
+</div>
 
 {% if playerTotal < 21 %}
     <form method="post" action="">
@@ -31,13 +32,14 @@
             <input type="submit" name="draw" value="Draw"
                 onClick="this.form.action='{{ path('game_draw') }}';"
             >
+            {% if playerTotal > 0 %}
             <input type="submit" name="bank" value="bank"
                 onClick="this.form.action='{{ path('game_bank') }}';"
             >
+            {% endif %}
         </p>
     </form>
 {% endif %}
-</div>
 
 {{ include('flash.html.twig') }}
 
