@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Documentation{% endblock %}
+
+{% block body %}
+    <h1>Documentation</h1>
+    <h2>FlowChart</h2>
+    <figure class="figure center">
+            <img src="{{ asset('build/images/flowchart.png') }}" width="400" class="in" alt="Flow Chart">
+            <figcaption>Flow Chart 21</figcaption>
+    </figure>
+    <h2>Psuedokod</h2>
+    <h3>Class</h3>
+    <p>
+        Function getRank(Card) {
+        <br>//use getRank() to get the value of all the cards from 2-10
+        <br>//create an array for A, K, Q and J as A => 14 and so on
+        <br>//use the rank in array to get a value
+        <br>}
+    </p>
+    <p>
+        Function  winLose (spelare, bank) {
+        <br>//bank greater than 21 value than winer is player
+        <br>//bank smaller than 21 and greater or equal to player than winer is bank
+        <br>}
+    </p>
+    <h3>Routes</h3>
+    <p>
+        Route game {
+        <br>//Start an object of Game to create a new deck
+        <br>//check if deck already existen than dont create
+        <br>//Initiate all the variables in session 
+        <br>//drawnCards, bankCards, playerTotal, bankTotal, Winner
+        <br>}
+    </p>
+    <p>
+        Route game/draw {
+        <br>//get the drawnCards from session
+        <br>//draw a random card and its value
+        <br>//add value and drawn card to session
+        <br>}
+    </p>
+    <p>
+        Route game/play {
+        <br>//render the drawn cards and value to  html.twig
+        <br>//create a flash message if value is greater than 21 to winer is bank
+        <br>//create flash message if value is equal to 21
+        <br>}
+    </p>
+    <p>
+        Route game/bank {
+        <br>//let the bank draw cards until sum of values is smaller than 17
+        <br>//do a while loop to catch all the drawn cards in an array and store the total to session
+        <br>//decide winLose(spelare, bank)
+        <br>//render with playerCards and bankCards show the sum of both and declare a winner
+        <br>}
+    </p>
+    <h2>Classes</h2>
+    <p>
+        I have three classes already Card: creates a card with a suit and rank, CardGraphic: is subklass to Card but suit is a symbol instead of
+        string and Deck: composition of CardGraphic which i have used in kmom02. I need one more class to complete kmom03. I create a new class
+        Game which is subklass Deck so that the class has all the inherited methods and i add two more methods. One method getRank(Card) to return
+        an integer for A, K, Q and J and winLose (val1, val2) to decide the winner.
+    </p>
+{% endblock %}
