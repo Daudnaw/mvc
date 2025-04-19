@@ -121,7 +121,6 @@ class HomeControllerJson
 
     #[Route("/api/deck/shuffle", methods: ['GET','POST'])]
     public function jsonShuffle(
-        Request $request,
         SessionInterface $session
     ): Response {
 
@@ -199,10 +198,10 @@ class HomeControllerJson
         $bankCards = $session->get("bankCards");
         $winner  = $session->get("winner");
 
+        $gameCards = 'Game not started yat';
+
         if ($drawnCards) {
             $gameCards = $deckPlay->getString($drawnCards);
-        } else {
-            $gameCards = 'Game not started yet';
         }
 
         $data = [
