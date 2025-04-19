@@ -13,14 +13,24 @@
     <div class="deck-container">
         {% if drawCard is iterable %}
             {% for value in drawCard %}
-                <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
-                    {{ value }}
-                </span>
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
             {% endfor %}
         {% else %}
-            <span class="deck {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
-                {{ drawCard }}
-            </span>
+            {% set rank = drawCard|slice(1, drawCard|length - 3) %}
+            {% set suit = drawCard|slice(-2, 1) %}
+        
+            <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                <div class="corner top-left">{{ rank }}</div>
+                <div class="corner bottom-right">{{ rank }}</div>
+                <div class="suit">{{ suit }}</div>
+            </div>
         {% endif %}
     </div>
 
@@ -29,14 +39,24 @@
     <div class="deck-container">
         {% if bankCards is iterable %}
             {% for value in bankCards %}
-                <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
-                    {{ value }}
-                </span>
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
             {% endfor %}
         {% else %}
-            <span class="deck {% if '♥' in drawCard %}red{% elseif '♦' in drawCard %}red{% else %}black{% endif %}">
-                {{ drawCard }}
-            </span>
+           {% set rank = drawCard|slice(1, drawCard|length - 3) %}
+            {% set suit = drawCard|slice(-2, 1) %}
+        
+            <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                <div class="corner top-left">{{ rank }}</div>
+                <div class="corner bottom-right">{{ rank }}</div>
+                <div class="suit">{{ suit }}</div>
+            </div>>
         {% endif %}
     </div>
 

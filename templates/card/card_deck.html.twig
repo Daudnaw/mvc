@@ -8,9 +8,14 @@
 
 <div class="deck-container">
     {% for value in newDeck %}
-        <span class="deck {% if '♥' in value %}red{% elseif '♦' in value %}red{% else %}black{% endif %}">
-            {{ value }}
-        </span>
+        {% set rank = value|slice(1, value|length - 3) %}
+        {% set suit = value|slice(-2, 1) %}
+    
+        <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+            <div class="corner top-left">{{ rank }}</div>
+            <div class="corner bottom-right">{{ rank }}</div>
+            <div class="suit">{{ suit }}</div>
+        </div>
     {% endfor %}
 </div>
 
