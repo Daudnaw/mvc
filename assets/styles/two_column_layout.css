@@ -17,17 +17,17 @@
 }
 
 .aside {
-    background-color: #fff;
+    background-color: rgb(89, 133, 89);
     border-right: 1px solid #ccc;
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 24px;
-    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 1.2em;
 }
 
 .aside h4 {
     border-bottom: 1px solid #ccc;
-    color: green;
+    color: #FFD700;
     word-wrap: break-word;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .aside a {
-    color: blue;
+    color: #FFD700;
 }
 
 .aside a:hover {

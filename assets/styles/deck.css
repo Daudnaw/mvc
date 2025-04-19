@@ -23,6 +23,16 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.card-body {
+    background: linear-gradient(180deg, #8e44ad 0%, #3498db 100%);
+    color: #fff;
+    padding: 2em;
+}
+
+.card-body a {
+    text-decoration: none;
+}
+
 .red {
     color: red;
 }
