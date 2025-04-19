@@ -6,7 +6,7 @@ use App\Card\Card;
 
 class Deck
 {
-    private $cards = [];
+    private array $cards = [];
 
     public function __construct()
     {
@@ -20,14 +20,14 @@ class Deck
         }
     }
 
-    public function shuffleDeck()
+    public function shuffleDeck(): array
     {
         $shuffledDeck = $this->cards;
         shuffle($shuffledDeck);
         return $shuffledDeck;
     }
 
-    public function drawCard()
+    public function drawCard(): ?Card
     {
         if (empty($this->cards)) {
             return null;
@@ -42,12 +42,12 @@ class Deck
         return $randomCard;
     }
 
-    public function getCount()
+    public function getCount(): int
     {
         return count($this->cards);
     }
 
-    public function drawCards(int $numCards)
+    public function drawCards(int $numCards): array
     {
         $drawnCards = [];
 
@@ -60,7 +60,11 @@ class Deck
         return $drawnCards;
     }
 
-    public function getString($deck = null)
+    /**
+    * @param array|null $deck
+    * @return string[] Array of strings representing the cards
+    */
+    public function getString($deck = null): array
     {
         $deckToDisplay = $deck ? $deck : $this->cards;
 

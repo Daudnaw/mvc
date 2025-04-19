@@ -4,7 +4,10 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
-    protected $suits = [
+    /**
+     * @var string[] Array of string keys and string values for suits
+     */
+    protected array $suits = [
         'hearts' => '♥',
         'spades' => '♠',
         'diamonds' => '♦',
