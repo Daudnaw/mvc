@@ -14,11 +14,17 @@
         If you chose to stop somewhere before 21 and than let the bank play then bank can win in two cases. If bank gets same points as you or
         greater than yours. If bank gets more than 21 than bank loses too and you win. Bank is played by computer so you donot need to draw any
         cards. Take your turn and if you want to hold your turn and let the bank play then just click the bankPlay. In all cases described above
-        ends the game always by declaring a winner and than you can restart the game by clicking the link ”start new game”.
+        ends the game always by declaring a winner and than you can restart the game by clicking the link ”start a new game”.
+    </p>
+
+    <p>
+        A is worth 14, K is worth 13, Q is worth 12 and J is worth 11. All the other cards are worth as their ranks. Suits of a card has 
+        no defining meaning in this game.
     </p>
 
 <ul>
     <li><a href="{{ path('game_play') }}">Play Game</li>
+    <li><a href="{{ path('game_doc') }}">Documentation</li>
 </ul>
 
 {% endblock %}

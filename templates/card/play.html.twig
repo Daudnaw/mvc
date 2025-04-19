@@ -5,12 +5,11 @@
 {% block title %}TwentyOne{% endblock %}
 
 {% block body %}
-    <h1>TwentyOne</h1>
-    <p>Here is some value of the card {{playerTotal}}</p>
+<div class="card-body">
+    <h1>Welcome to TwentyOne</h1>
 
-<ul>
-<li>click the linkt to play thgggggggggggggggggggggggggggggggggg</li>
-</ul>
+    <h2>Players hand</h2>
+    <p>Players totalPoints: {{playerTotal}}</p>
 
 <div class="deck-container">
     {% if drawCard is iterable %}
@@ -33,7 +32,7 @@
                 onClick="this.form.action='{{ path('game_draw') }}';"
             >
             {% if playerTotal > 0 %}
-            <input type="submit" name="bank" value="bank"
+            <input type="submit" name="bank" value="bankPlay"
                 onClick="this.form.action='{{ path('game_bank') }}';"
             >
             {% endif %}
@@ -46,6 +45,7 @@
 <ul>
     <li><a href="{{ path('game') }}">Start a new game</li>
 </ul>
+</div>
 
 {% endblock %}
 
