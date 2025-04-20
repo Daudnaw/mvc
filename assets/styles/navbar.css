@@ -16,8 +16,8 @@
 }
 
 .navbar a:hover{
-    color: black;
-    background-color: gold;
+    color: gold;
+    background-color:  rgb(89, 133, 89);
 }
 
 .navbar ul {

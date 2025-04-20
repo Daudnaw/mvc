@@ -1,5 +1,64 @@
 
-@import "main.css";
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #006400;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #1a4d1a;
+    padding: 20px;
+}
+
+a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #fff;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #FFF;
+    margin-bottom: 1.2em;
+}
+
+h1 {
+    font-size: 3em;
+    color: #FFD700;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #FFF;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: 2em;
+    color: #FFD700;
+    margin-bottom: 0.5em;
+}
+
+.courier {
+    padding-left: 2em;
+}
+
+.figure.center {
+    display: block;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
 @import "header.css";
 @import "navbar.css";
 @import "flash.css";
