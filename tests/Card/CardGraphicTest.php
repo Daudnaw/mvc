@@ -23,7 +23,6 @@ class CardGraphicTest extends TestCase
 
         $str = $card->getAsString();
         $this->assertEquals('[Q♥]', $str);
-        $this->assertStringContainsString('♥', $str);
     }
 
 }
