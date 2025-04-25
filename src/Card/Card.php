@@ -4,7 +4,7 @@ namespace App\Card;
 
 /**
  * Class Card
- * 
+ *
  * This class represents a card with suit and rank
  */
 class Card
@@ -21,7 +21,7 @@ class Card
 
     /**
      * Creates a new card with arguments suit and rank
-     * 
+     *
      * @param string $suit cards color
      * @param string $rank cards rank
      */
@@ -33,7 +33,7 @@ class Card
 
     /**
      * Get cards suit
-     * 
+     *
      * @return string cards suit
      */
     public function getSuit(): string
@@ -43,7 +43,7 @@ class Card
 
     /**
      * Get cards rank
-     * 
+     *
      * @return string cards rank
      */
     public function getRank(): string
@@ -53,7 +53,7 @@ class Card
 
     /**
      * Returns card as a string like [Ahearts]
-     * 
+     *
      * @return string card representation as a string
      */
     public function getAsString(): string

@@ -4,10 +4,21 @@ namespace App\Card;
 
 use App\Card\Card;
 
+/**
+ * Class Deck
+ *
+ * This is a composition of class CardGraphics 52  objects
+ */
 class Deck
 {
+    /**
+     * @var CardGraphic[] Array with all cards
+     */
     private array $cards = [];
 
+    /**
+     * Creates a new deck of cards with 52 cards, no jokers
+     */
     public function __construct()
     {
         $suits = ['hearts', 'spades', 'diamonds', 'clubs'];
@@ -20,6 +31,11 @@ class Deck
         }
     }
 
+    /**
+     * Mix upp the deck and return a new mixed array av cards.
+     *
+     * @return CardGraphic[] mixed cards
+     */
     public function shuffleDeck(): array
     {
         $shuffledDeck = $this->cards;
@@ -27,6 +43,11 @@ class Deck
         return $shuffledDeck;
     }
 
+    /**
+     * Take away a random card from the deck
+     *
+     * @return CardGraphic|null returns a card if deck is not finished
+     */
     public function drawCard(): ?Card
     {
         if (empty($this->cards)) {
@@ -42,11 +63,22 @@ class Deck
         return $randomCard;
     }
 
+    /**
+     * Reutrns number of card remaining in the deck
+     *
+     * @return int Number of cards in the deck
+     */
     public function getCount(): int
     {
         return count($this->cards);
     }
 
+    /**
+     * Take away give number of cards from the deck
+     *
+     * @param int $numCards Number of cards to be drawn.
+     * @return CardGraphic[] Array with given number of cards.
+     */
     public function drawCards(int $numCards): array
     {
         $drawnCards = [];
@@ -54,14 +86,21 @@ class Deck
         $numCards = min($numCards, count($this->cards));
 
         for ($i = 0; $i < $numCards; $i++) {
-            $drawnCards[] = $this->drawCard();
-        }
+            $card = $this->drawCard();
 
+            if ($card === null) {
+                break;
+            }
+
+            $drawnCards[] = $card;
+        }
         return $drawnCards;
     }
 
     /**
-    * @param array|null $deck
+     * Returns cards as strings
+     *
+    * @param CardGraphic[]|null $deck cards to be stringed if that is a verb.
     * @return string[] Array of strings representing the cards
     */
     public function getString($deck = null): array
