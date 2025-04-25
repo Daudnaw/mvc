@@ -12,7 +12,7 @@ class DeckTest extends TestCase
     /**
      * Test deck creation and card count.
      */
-    public function testCreateDeck()
+    public function testCreateDeck(): void
     {
         $deck = new Deck();
         $this->assertEquals(52, $deck->getCount());
@@ -24,7 +24,7 @@ class DeckTest extends TestCase
     /**
      * Test deck shuffling.
      */
-    public function testShuffleDeck()
+    public function testShuffleDeck(): void
     {
         $deck = new Deck();
         $original = $deck->getString();
@@ -38,7 +38,7 @@ class DeckTest extends TestCase
     /**
      * Test drawing one crd.
      */
-    public function testDrawCard()
+    public function testDrawCard(): void
     {
         $deck = new Deck();
         $countBefore = $deck->getCount();
@@ -51,7 +51,7 @@ class DeckTest extends TestCase
     /**
      * Test drawing multiple cards.
      */
-    public function testDrawCards()
+    public function testDrawCards(): void
     {
         $deck = new Deck();
         $drawn = $deck->drawCards(5);
@@ -63,7 +63,7 @@ class DeckTest extends TestCase
     /**
      * Test getString on a deck and the form.
      */
-    public function testGetStringDeck()
+    public function testGetStringDeck(): void
     {
         $deck = new Deck();
         $subset = $deck->drawCards(3);
@@ -79,7 +79,7 @@ class DeckTest extends TestCase
     /**
      * Test drawing from empty deck returns null.
      */
-    public function testDrawFromEmptyDeck()
+    public function testDrawFromEmptyDeck(): void
     {
         $deck = new Deck();
         $deck->drawCards(52);

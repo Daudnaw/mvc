@@ -12,7 +12,7 @@ class CardGraphicTest extends TestCase
     /**
      * Test object creation and string representation using symbols.
      */
-    public function testCreateCardGraphic()
+    public function testCreateCardGraphic(): void
     {
         $card = new CardGraphic('hearts', 'Q');
         $this->assertInstanceOf("\App\Card\CardGraphic", $card);

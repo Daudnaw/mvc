@@ -12,21 +12,12 @@ class GameTest extends TestCase
     /**
      * Test getRank returns correct numeric value for face and number cards.
      */
-    public function testGetRank()
+    public function testGetRank(): void
     {
         $game = new Game();
 
         $ace = new Card('hearts', 'A');
         $this->assertEquals(14, $game->getRank($ace));
-
-        //$king = new Card('hearts', 'K');
-        //$this->assertEquals(13, $game->getRank($king));
-
-        //$queen = new Card('hearts', 'Q');
-        //$this->assertEquals(12, $game->getRank($queen));
-
-        //$jack = new Card('hearts', 'J');
-        //$this->assertEquals(11, $game->getRank($jack));
 
         $num = new Card('hearts', '7');
         $this->assertEquals(7, $game->getRank($num));
@@ -35,18 +26,20 @@ class GameTest extends TestCase
     /**
      * Test winLose logic for different perspectives.
      */
-    public function testWinLose()
+    public function testWinLose(): void
     {
-        $this->assertEquals("spelare", Game::winLose(18, 22));
-        $this->assertEquals("bank", Game::winLose(18, 20));
-        $this->assertEquals("spelare", Game::winLose(20, 19));
-        $this->assertEquals("bank", Game::winLose(17, 21));
+        $game = new Game();
+
+        $this->assertEquals("spelare", $game->winLose(18, 22));
+        $this->assertEquals("bank", $game->winLose(18, 20));
+        $this->assertEquals("spelare", $game->winLose(20, 19));
+        $this->assertEquals("bank", $game->winLose(17, 21));
     }
 
     /**
      * Test inherited functionality from class Deck.
      */
-    public function testGameFuncationality()
+    public function testGameFuncationality(): void
     {
         $game = new Game();
         $this->assertEquals(52, $game->getCount());
