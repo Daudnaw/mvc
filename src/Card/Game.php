@@ -25,7 +25,7 @@ class Game extends Deck
         return $cardValues[$rank] ?? (int) $rank;
     }
 
-    public static function winLose(int $spelare, int $bank): string
+    public function winLose(int $spelare, int $bank): string
     {
         if ($bank > 21) {
             return "spelare";
