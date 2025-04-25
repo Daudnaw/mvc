@@ -194,7 +194,7 @@ class CardControllerTwig extends AbstractController
 
         $bankCards = $deckPlay->getString($bankCard);
 
-        $winner = $deckPlay::winLose($totalPlayer, $totalBank);
+        $winner = $deckPlay->winLose($totalPlayer, $totalBank);
 
         if ($winner === 'spelare') {
             $this->addFlash('notice', 'Player won the game!');
