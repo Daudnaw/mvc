@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Remder book in view {% endblock %}
+
+{% block body %}
+
+<h2>Book detail of {{book.getTitle}}</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Writer</th>
+            <th>ISBN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ book.getId|e }}</td>
+            <td>{{ book.getTitle|e }}</td>
+            <td>{{ book.getWriter|e }}</td>
+            <td>{{ book.getIsbn|e }}</td>
+        </tr>
+        <tr>
+                <td colspan="4" style="text-align: center;">
+                    <img src="{{ asset('build/images/' ~ book.getImage) }}" width="400" class="in" alt="Book Cover">
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}

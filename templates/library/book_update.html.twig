@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Update a book{% endblock %}
+
+{% block body %}
+
+
+<form class="label-left" method="post" action="/library/update">
+    <fieldset>
+        <legend>Add a book</legend>
+
+        <label for="id">ID</label>
+        <input id="id" type="text" name="id" value="{{ book.getId }}" readonly>
+
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" value="{{ book.getTitle}}">
+
+        <label for="writer">Writer</label>
+        <input id="writer" type="text" name="writer" value="{{ book.getWriter}}">
+
+
+        <label for="isbn">ISBN</label>
+        <input id="isbn" type="text" name="isbn" value="{{ book.getIsbn}}">
+
+        <label for="image">Image</label>
+        <input id="image" type="text" name="image" value="{{ book.getImage}}">
+
+        <input type="submit" name="doit" value="Uppdate book">
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
+
+
+
+

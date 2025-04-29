@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a book{% endblock %}
+
+{% block body %}
+
+<form class="label-left" method="post" action="/library/create">
+    <fieldset>
+        <legend>Add a book</legend>
+
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title">
+
+        <label for="writer">Writer</label>
+        <input id="writer" type="text" name="writer">
+
+
+        <label for="isbn">ISBN</label>
+        <input id="isbn" type="text" name="isbn">
+
+        <label for="image">Image</label>
+        <input id="image" type="text" name="image">
+
+        <input type="submit" name="doit" value="Add to library">
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
