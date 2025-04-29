@@ -62,6 +62,7 @@ h3 {
 @import "header.css";
 @import "navbar.css";
 @import "flash.css";
+@import "table.css";
 @import "deck";
 @import "img.css";
 @import "two_column_layout";
