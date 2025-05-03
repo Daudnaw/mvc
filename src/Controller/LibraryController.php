@@ -43,8 +43,8 @@ final class LibraryController extends AbstractController
 
         $book = new Library();
         $book->setTitle($title);
-        $book->setIsbn($writer);
-        $book->setWriter($isbn);
+        $book->setIsbn($isbn);
+        $book->setWriter($writer);
         $book->setImage($image);
 
         // tell Doctrine you want to (eventually) save the Product
@@ -60,21 +60,6 @@ final class LibraryController extends AbstractController
         );
 
         return $this->redirectToRoute('library_view_all');
-    }
-
-    #[Route('/library/show', name: 'library_show_all')]
-    public function showAllLibrary(
-        LibraryRepository $libraryRepository
-    ): Response {
-        $books = $libraryRepository
-            ->findAll();
-    
-        //return $this->json($books);
-        $response = $this->json($books);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
     }
 
     #[Route('/library/show/{id}', name: 'library_by_id')]
@@ -180,5 +165,36 @@ final class LibraryController extends AbstractController
         ];
 
         return $this->render('library/view.html.twig', $data);
+    }
+
+    #[Route('api/library/books')]
+    public function showAllLibrary(
+        LibraryRepository $libraryRepository
+    ): Response {
+        $books = $libraryRepository
+            ->findAll();
+    
+        //return $this->json($books);
+        $response = $this->json($books);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route('api/library/book/{isbn}')]
+    public function searchBook(
+        LibraryRepository $libraryRepository,
+        string $isbn
+    ): Response {
+
+        $book = $libraryRepository
+            ->findByIsbn($isbn);
+
+        $response = $this->json($book);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 }

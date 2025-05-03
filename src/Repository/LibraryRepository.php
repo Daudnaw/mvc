@@ -16,6 +16,20 @@ class LibraryRepository extends ServiceEntityRepository
         parent::__construct($registry, Library::class);
     }
 
+    /**
+     * Find all producs having a value above the specified one.
+     * 
+     * @return Library[] Returns an array of Product objects
+     */
+    public function findByIsbn(string $isbn): ?Library
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.isbn = :isbn')
+            ->setParameter('isbn', $isbn)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     //    /**
     //     * @return Library[] Returns an array of Library objects
     //     */
