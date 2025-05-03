@@ -4,41 +4,52 @@
 
 {% block body %}
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Writer</th>
-            <th>ISBN</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for book in books %}
-            <tr>
-                <td>
-                    <a href="{{ path('library_by_id', { id: book.getId }) }}">
-                        {{ book.getId }}
-                    </a>
-                </td>
-                <td>{{ book.getTitle|e }}</td>
-                <td>{{ book.getWriter|e }}</td>
-                <td>{{ book.getIsbn|e }}</td>
-                <td>
-                    <a href="{{ path('library_delete_by_id', { id: book.getId }) }}">
-                        delete
-                    </a>
-                </td>
-                <td>
-                    <a href="{{ path('book_update', { id: book.getId }) }}">
-                        update
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<h2>All the availabe books. </h2>
+<p>Choose to see more about a book, delete och edit information.</p>
+{% if books is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>More details</th>
+                    <th>Title</th>
+                    <th>Writer</th>
+                    <th>ISBN</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('library_by_id', { id: book.getId }) }}">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </a>
+                        </td>
+                        <td>{{ book.getTitle|e }}</td>
+                        <td>{{ book.getWriter|e }}</td>
+                        <td>{{ book.getIsbn|e }}</td>
+                        <td>
+                            <a href="{{ path('library_delete_by_id', { id: book.getId }) }}">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('book_update', { id: book.getId }) }}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% else %}
+    <p class="warning">Library is empty, add some books by link below.</p>
+{% endif %}
+
+<ul>
+    <li><a href="{{ path('book_create') }}">Add a new book</li>
+</ul>
 
 {{ include('flash.html.twig') }}
 

@@ -5,12 +5,21 @@
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>Add links to all the under pages</h1>
+    <h1>Welcome to the Library</h1>
 
-    <p>Add some text to explain what is happening how it works</p>
-    
+    <p>
+        You have few options, if you want to see all available books click view Library.
+    </p>
+    <p>
+        If you want to edit information about a book or delete one book click on view library
+        and then choose to edit or delete the book.
+    </p>
+    <p>
+        Furthur information about a certain book also is found on the same link. Click view library
+        and then choose a book to see more detailed information about the book
+    </p>
     <ul>
-        <li><a href="{{ path('book_create') }}">Create a new book</li>
+        <li><a href="{{ path('book_create') }}">Add a new book</li>
         <li><a href="{{ path('library_view_all') }}">View Library</li>
     </ul>
 
