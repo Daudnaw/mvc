@@ -31,6 +31,11 @@ p {
     margin-bottom: 1.2em;
 }
 
+.warning {
+    color: red;
+    font-size: 3em;
+}
+
 h1 {
     font-size: 3em;
     color: #FFD700;
