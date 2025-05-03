@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\Deck;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,6 +62,14 @@ class HomeControllerJson
             [
                 'route' => '/api/game',
                 'description' => 'This route shows you the state of the game twentyOne',
+            ],
+            [
+                'route' => '/api/library/books',
+                'description' => 'This route shows you the all books in library.'
+            ],
+            [
+                'route' => '/api/library/book/:vv-111-111',
+                'description' => 'This route let you search with isbn <vv-111-111> of a book.'
             ],
         ];
 
@@ -218,4 +227,5 @@ class HomeControllerJson
         );
         return $response;
     }
+
 }
