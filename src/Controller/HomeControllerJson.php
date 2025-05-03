@@ -69,14 +69,14 @@ class HomeControllerJson
             ],
             [
                 'route' => '/api/library/book/:vv-111-111',
-                'description' => 'This route let you search with isbn <vv-111-111> of a book.'
+                'description' => 'This route let you search with isbn vv-111-111 of a book.'
             ],
         ];
 
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES 
         );
         return $response;
     }
