@@ -117,10 +117,70 @@
                 Flödesschema, problemlösning, mer om twig och static funktioner.
             </p>
             <h2 id="kmom04">kmom04</h2>
-
+            <p>
+                Jag har tidigare läst objektorienterad python och PHPUnit kändes inte konstigt. Det upplevdes lite mer som repetition av det som vi tidigare har gjort i python. Jag tycker och håller med
+                litteraturen att det är mycket smidigare att testa sin egen kod då och då innan det blir för stort så att det blir ett naturligt flöde. Samtidigt tycker att det blir lite svårare att testa
+                sin egen kod till fullo som Marie nämnde i sin föreläsning. Allmänt tycker jag att det är mycket bra praktik och det blir lättare att skapa sina egna kontrollstationer så att det blir en
+                ordning på koden. Speciellt med white box testing som vi gjorde nu så att vi vet koden och våra förväntningar på den som bör testas då och då under processen.
+            </p>
+            <p>
+                Av min erfarenhet från oopython visste jag att det kan bli komplicerat med objektorienterad programmering därför gjorde jag mina egna kontroller redan från kmom01. Dvs. min stil var lite
+                mer “Test Driven Development”, min tanke var inte unit tester från kmom01 men det var lite mer verification och debugging av min kod längst vägen. Jag lyckades med mer än 90% kodtäckning
+                utan några bekymmer.
+            </p>
+            <p>
+                Jag upplevde att det största delen av koden var testbar men jag fick lite problem med statiska metoder som jag hade och jag har refaktoriserat min kod så att det blir testbar. Jag var
+                tvungen att gå tillbaka och ändra lite för game21 från kmom03 också men allting fungerar och alla metoder kunde testas.
+            </p>
+            <p>
+                Jag hade en metod som jag hade definierat som statisk och det gick inte att testa eller det gick att testa men jag fick problem med att linta min kod. Jag ändrade min metod till en
+                publikmetod så det löste sig. Det finns mycket potential för att förbättra min kod men att testa koden var inga stora bekymmer.
+            </p>
+            <p>
+                Jag har läst om att testa med hjälp av mocka objekt och jag tror att jag förstår också varför det kan behövas men bland mina tester har jag inga sådana tester. Jag har inte några external
+                dependencies eller några slumpmässiga händelser i min kod därför har jag inte använt mocking. Mina testar i stort sätt testar deterministisk logik och det har gått bra att texta utan att
+                skapa stub eller mocka. Jag upplevde inte från krav att man var tvungen att skapa någon sådan test därför har jag låtit det bli. Säger du till kan jag ersätta och använda mocking bara för
+                visandets skull.
+            </p>
+            <p>
+                Jag upplever att testbar kod måste inte vara en identifikation för snygg och ren kod men i de flesta fall bör det innebära det. Dvs. om kod är testbar bör det innebära att koden är rent
+                och skriven i enkla icke komplexa metoder vilket då innebär att all kod blir testbar. På det viset skulle det kunna påstås att testbar kod kan vara en identifierare till snygg och ren kod
+                men i motsatt riktning behöver inte det stämma alls. Om koden är snygg och ren kommer det inte automatiskt innebära att den är testbar, koden måste vara funktionell också så att
+                funktionaliteten kan testas.
+            </p>
+            <h3>TIL</h3>
+            <p>
+                Unittesta i PHP, verktyg phpunit och mocka ett objekt för testning.
+            </p>
             <h2 id="kmom05">kmom05</h2>
-
-
+            <p>
+                Jag upplevde att det gick bra att arbeta med övningen och det var smidigt att följa instruktioner. Det var några saker som jag reagerade på: ena hur smidigt det var att skapa en databas och
+                använda den. Det vill säga om någon inte har full koll på SQL kan ändå arbeta med databasen. Samtidigt tyckte jag det var irriterande att inte ha koll på vad som händer i bakgrunden.
+                Exempelvis att jag gjorde övningen i me/report så att jag hade Produkt i report som jag ville ta bort efteråt och var lite rädd ifall jag skulle sabba även Library. Det var bara en reaktion,
+                i verkligheten när jag började läsa då var det väl inte så svårt att ta bort Product Entity. Jag upplevde också att det var mycket smidigt hur Doctrine skapade databaskopplingar och entity
+                mapping automatiskt. Man kunde även välja att skapa unit tester så att det genererades automatiskt. Mycket smidigt att man fick med alla getters och setters också.
+            </p>
+            <p>
+                Jag tänkte att /library ska vara tydlig och enkel att följa. Det ska gå att läsa och vara användarvänligt när det gäller design och flödet i appen måste vara logiskt. Jag tänkte också på
+                responsivitet, exempelvis att användaren får flash-meddelande om man lyckas uppdatera, radera eller skapa en ny bok. Ovan nämnda faktorer finns med i appen och det går smidigt att följa men
+                några andra saker som jag kunde ha gjort mer men jag inte har gjort är att det bör kontrollera vilken typ av input som kommer, kanske köra try and catch så att felmeddelande kan visas för
+                användare. Jag använder sådant meddelande endast en gång då library är tom, då uppmanas användaren att lägga till en bok men det bör göras vid några andra tillfällen också. Sammanfattningsvis
+                kan man säga att fokus var på att ge användaren bra erfarenhet.
+            </p>
+            <p>
+                Det gick bra att arbeta med Object-Relational Mapping. Jag är inte säker, men att arbeta med CRUD i ORM upplevdes som en mycket latare version av SQL. Exemepelvis remove() som används för
+                att radera ett objekt automatiskt och det händer magiska grejer i bakgrunden hade kunnat skötas med en lagrad procedurer. Jag förstår att det blir smidigare med ORM men hade jag behövt
+                arbeta i större omfattning då hade jag ändå velat använda SQL så att jag vet och kan se vad som händer i bakgrunden.
+            </p>
+            <p>
+                Jag tror att en del av det här besvarats ovan men att arbeta med ORM påminner mycket om så som vi arbetat i webtec men där använde vi istället riktig SQL och nu finns det flera alternativ
+                för att kunna arbeta SQL. Det kan väljas att arbeta med SQL, querrybuilding osv. Jag valde ändå att arbeta med querrybuilding så att jag får lära mig något nytt. I ORM blir koden mycket
+                renare och koden är samlat på olika ställen och mycket sköts automatiskt och magiskt. Vilket jag upplever kan vara lika bra som dåligt. Det kanske beror på hur mycket kontrollbehov man har.
+            </p>
+            <h3>TIL</h3>
+            <p>
+                CRUD i Object-Relational Mapping och lite mer om att kunna escapa validering i phpmd.
+            </p>
             <h2 id="kmom06">kmom06</h2>
 
             <h2 id="kmom10">kmom10</h2>
