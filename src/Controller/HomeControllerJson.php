@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\Deck;
-
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -76,7 +75,7 @@ class HomeControllerJson
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES 
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
         );
         return $response;
     }

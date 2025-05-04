@@ -18,8 +18,8 @@ class LibraryRepository extends ServiceEntityRepository
 
     /**
      * Find all producs having a value above the specified one.
-     * 
-     * @return Library[] Returns an array of Product objects
+     *
+     * @return Library|null Returns an array of Product objects
      */
     public function findByIsbn(string $isbn): ?Library
     {

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Library;
 use App\Repository\LibraryRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,10 +41,10 @@ final class LibraryController extends AbstractController
         $image = $request->request->get('image');
 
         $book = new Library();
-        $book->setTitle($title);
-        $book->setIsbn($isbn);
-        $book->setWriter($writer);
-        $book->setImage($image);
+        $book->setTitle((string) $title);
+        $book->setIsbn((string) $isbn);
+        $book->setWriter((string) $writer);
+        $book->setImage((string) $image);
 
         // tell Doctrine you want to (eventually) save the Product
         // (no queries yet)
@@ -139,10 +138,10 @@ final class LibraryController extends AbstractController
         $isbn = $request->request->get('isbn');
         $image = $request->request->get('image');
 
-        $book->setTitle($title);
-        $book->setIsbn($writer);
-        $book->setWriter($isbn);
-        $book->setImage($image);
+        $book->setTitle((string) $title);
+        $book->setIsbn((string) $writer);
+        $book->setWriter((string) $isbn);
+        $book->setImage((string) $image);
 
         $entityManager->flush();
 
@@ -173,7 +172,7 @@ final class LibraryController extends AbstractController
     ): Response {
         $books = $libraryRepository
             ->findAll();
-    
+
         //return $this->json($books);
         $response = $this->json($books);
         $response->setEncodingOptions(
