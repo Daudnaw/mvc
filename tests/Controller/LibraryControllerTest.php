@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class LibraryControllerTest extends TestCase
 {
-    public function testPlaceholder(): void
+    public function testDummy(): void
     {
         $this->assertTrue(true);
     }
