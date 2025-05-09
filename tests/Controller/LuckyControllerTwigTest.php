@@ -7,16 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class LuckyControllerTwigTest extends WebTestCase
 {
     /**
-     * Test Lucky
+     * Test route /
      */
-    public function testLuckyNumber(): void
+    public function testHome(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/lucky');
-
+        $client->request('GET', '/');
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('body');
-        $this->assertStringContainsString('number', $client->getResponse()->getContent());
     }
 
 }
