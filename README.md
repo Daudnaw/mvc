@@ -16,3 +16,10 @@ To clone this course repo to github we have to follow the following stuff
 - To start the server you run the command ` php -S localhost:8888 -t public  ` which starts the server
 - Then you are ready to access the webbpage
 - Mind you that after any changes in CSS or adding an images you have to `npm run build` so that your changes can be uppdated to public
+
+## Scrutinizer
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Daudnaw/mvc/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Daudnaw/mvc/?branch=master)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/Daudnaw/mvc/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Daudnaw/mvc/?branch=master)
+
+[![Build Status](https://scrutinizer-ci.com/g/Daudnaw/mvc/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Daudnaw/mvc/build-status/master)
