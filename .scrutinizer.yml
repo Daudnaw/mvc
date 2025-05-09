@@ -15,10 +15,6 @@ build:
                     # version: 8.1.13
                     # version: 8.1.17
                     # version: 8.2.4
-                node: 16.20.2
-            before_commands:
-                - npm install
-                - npm run build
         analysis:
             tests:
                 override:
