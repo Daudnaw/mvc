@@ -8,8 +8,9 @@ build:
     image: default-bionic
 
     nodes:
-        root_path: "mvc/me/report"
         my-tests:
+            root_path: 
+                - "mvc/me/report"
             environment:
                 php:
                     version: 8.3.3
