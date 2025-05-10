@@ -9,27 +9,21 @@ build:
 
     nodes:
         my-tests:
-            root_path: 
-                - "mvc/me/report"
             environment:
                 php:
-                    version: 8.3.3
-                node: "16"
-            commands:
-                - node -v
-                - npm install
-                - npm run build
-
+                    version: 8.3.19
+                    # version: 8.1.13
+                    # version: 8.1.17
+                    # version: 8.2.4
         analysis:
             tests:
                 override:
                     - php-scrutinizer-run
-                    # - phpcs-run # Not used, missing config file
-
+                    #- phpcs-run # Not used, missing config file
     tests:
         override:
-            - command: "composer phpunit"
-              coverage:
-                  file: "docs/coverage.clover"
-                  format: "php-clover"
-
+            -   command: "composer phpunit"
+                # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+                coverage:
+                    file: "docs/coverage.clover"
+                    format: "php-clover"
