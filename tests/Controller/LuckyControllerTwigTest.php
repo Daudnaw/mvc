@@ -12,7 +12,7 @@ class LuckyControllerTwigTest extends WebTestCase
         $client->request('GET', '/lucky');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('body'); // Assumes there's a body tag
+        $this->assertSelectorExists('body');
         $this->assertStringContainsString('number', $client->getResponse()->getContent());
     }
 
@@ -22,7 +22,7 @@ class LuckyControllerTwigTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('title', 'Home'); // Adjust to actual content
+        $this->assertSelectorTextContains('title', 'Home');
     }
 
     public function testSessionDelete(): void
@@ -48,8 +48,8 @@ class LuckyControllerTwigTest extends WebTestCase
         $client->request('GET', '/about');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorExists('body'); // Optional: ensure page has layout
-        $this->assertSelectorTextContains('h1', 'About'); // Adjust text to actual content
+        $this->assertSelectorExists('body');
+        $this->assertSelectorTextContains('title', 'About');
     }
 
     public function testReportPageLoads(): void
@@ -59,6 +59,6 @@ class LuckyControllerTwigTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorExists('body');
-        $this->assertSelectorTextContains('h1', 'Report'); // Adjust text to what your template includes
+        $this->assertSelectorTextContains('h1', 'Redovisning');
     }
 }
