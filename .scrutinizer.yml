@@ -12,7 +12,7 @@ build:
             environment:
                 php:
                     version: 8.3.3
-                node: true
+                node: "16"
             commands:
                 - node -v
                 - npm install
