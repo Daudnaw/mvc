@@ -93,10 +93,10 @@ class Library
         ?string $isbn = null,
         ?string $image = null
     ): self {
-        $this->setTitle($title ?? $this->getTitle());
-        $this->setWriter($writer ?? $this->getWriter());
-        $this->setIsbn($isbn ?? $this->getIsbn());
-        $this->setImage($image ?? $this->getImage());
+        $this->setTitle($title ?? $this->getTitle() ?? '');
+        $this->setWriter($writer ?? $this->getWriter() ?? '');
+        $this->setIsbn($isbn ?? $this->getIsbn() ?? '');
+        $this->setImage($image ?? $this->getImage() ?? '');
 
         return $this;
     }

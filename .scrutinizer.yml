@@ -3,8 +3,7 @@ imports:
 
 filter:
     excluded_paths: [vendor/*, test/*]
-    dependency_paths:
-        - "lib/"
+    dependency_paths: ["lib/*"]
 build:
     image: default-bionic
 
