@@ -77,4 +77,27 @@ class Library
 
         return $this;
     }
+
+    /**
+     * Set multiple properties with optional values.
+     *
+     * @param string|null $title
+     * @param string|null $writer
+     * @param string|null $isbn
+     * @param string|null $image
+     * @return $this
+     */
+    public function bookSetter(
+        ?string $title = null,
+        ?string $writer = null,
+        ?string $isbn = null,
+        ?string $image = null
+    ): self {
+        $this->setTitle($title ?? $this->getTitle());
+        $this->setWriter($writer ?? $this->getWriter());
+        $this->setIsbn($isbn ?? $this->getIsbn());
+        $this->setImage($image ?? $this->getImage());
+
+        return $this;
+    }
 }

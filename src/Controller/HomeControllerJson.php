@@ -83,7 +83,6 @@ class HomeControllerJson
     #[Route("/api/quote")]
     public function jsonQuote(): Response
     {
-        //$number = random_int(0, 100);
         $quote = ['A donkey dies of hunger if he has to choose between two piles of gras',
         'A goat never gets fat if lion is in the same room',
         'Beautiful thing about democracy is minorities are never right'];
@@ -96,135 +95,10 @@ class HomeControllerJson
             'time' => date('H:i:s')
         ];
 
-        //$response = new Response();
-        //$response->setContent(json_encode($data));
-        //$response->headers->set('Content-Type', 'application/json');
-
-        //return $response;
-        // return new JsonResponse($data);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
     }
-
-    #[Route("/api/deck")]
-    public function jsonDeck(
-    ): Response {
-
-        $deck = new Deck();
-
-        $data = [
-            "newDeck" => $deck->getString(),
-            "count" => $deck->getCount()
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        );
-        return $response;
-    }
-
-    #[Route("/api/deck/shuffle", methods: ['GET','POST'])]
-    public function jsonShuffle(
-        SessionInterface $session
-    ): Response {
-
-        $deck = new Deck();
-        $shuffled = $deck->shuffleDeck();
-        $session->set("shuffledDeck", $deck);
-
-        $data = [
-            "shuffleDeck" => $deck->getString($shuffled)
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        );
-        return $response;
-    }
-
-    #[Route("/api/deck/draw", methods: ['GET', 'POST'])]
-    public function jsonDraw(
-        SessionInterface $session
-    ): Response {
-
-        $deck = $session->get("shuffledDeck");
-        $drawn = $deck->drawCard();
-
-        $data = [
-            "count" => $deck->getCount(),
-            "drawCard" => $drawn->getAsString()
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        );
-        return $response;
-    }
-
-    #[Route("/api/deck/draw/{num<\d+>}", methods: ['GET', 'POST'])]
-    public function numDraw(
-        int $num,
-        SessionInterface $session
-    ): Response {
-
-        $deck = $session->get("shuffledDeck");
-        $drawn = $deck->drawCards($num);
-
-        $drawnCards = [];
-        foreach ($drawn as $card) {
-            $drawnCards[] = $card->getAsString();
-        }
-
-        $data = [
-            "count" => $deck->getCount(),
-            "drawCard" => $drawnCards
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        );
-        return $response;
-    }
-
-    #[Route("/api/game")]
-    public function game(
-        SessionInterface $session
-    ): Response {
-
-
-        $deckPlay = $session->get("twentyNew");
-        $drawnCards = $session->get("drawnCards");
-        $totalPlayer = $session->get("playerTotal");
-        $totalBank = $session->get("bankTotal");
-        $bankCards = $session->get("bankCards");
-        $winner  = $session->get("winner");
-
-        $gameCards = 'Game not started yat';
-
-        if ($drawnCards) {
-            $gameCards = $deckPlay->getString($drawnCards);
-        }
-
-        $data = [
-            "drawCard" => $gameCards,
-            "playerTotal" => $totalPlayer,
-            "bankCards" => $bankCards,
-            "bankTotal" => $totalBank,
-            "winner" => $winner
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
-        );
-        return $response;
-    }
-
 }

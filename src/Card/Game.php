@@ -53,4 +53,45 @@ class Game extends Deck
 
         return ($bank >= $spelare || $bank === 21) ? "bank" : "spelare";
     }
+
+    /**
+     * Converts an array of Card objects into their string representations.
+     *
+     * @param Card[] $drawnCards An array of Card objects to convert.
+     * 
+     * @return string[] An array of strings representing each card.
+     */
+    public function getGameCards(array $drawnCards): array
+    {
+        $gameCards = [];
+        foreach ($drawnCards as $card) {
+            $gameCards[] = $card->getAsString();
+        }
+
+        return $gameCards;
+    }
+
+    /**
+     * Draw cards for the bank until its total is at 17.
+     *
+     * @param array $drawnCards The cards drawn in the game.
+     * @param int $totalBank The current total value of the bank's hand.
+     * @return array An associative array with 'cards'
+     */
+    public function drawBankCards(array $drawnCards, int $totalBank): array
+    {
+        $bankCards = [];
+
+        while ($totalBank < 17) {
+            $drawnCard = $this->drawCard();
+            $bankCards[] = $drawnCard;
+            $cardValue = $this->getRank($drawnCard);
+            $totalBank += $cardValue;
+        }
+
+        return [
+            'cards' => $bankCards,
+            'total' => $totalBank
+        ];
+    }
 }

@@ -20,47 +20,6 @@ final class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('/book/create', name: 'book_create')]
-    public function createBook(
-    ): Response {
-
-        return $this->render('library/book_create.html.twig');
-    }
-
-    #[Route('/library/create', name: 'library_create', methods:['POST'])]
-    public function createLibrary(
-        Request $request,
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-
-        // Getting form data from POST
-        $title = $request->request->get('title');
-        $writer = $request->request->get('writer');
-        $isbn = $request->request->get('isbn');
-        $image = $request->request->get('image');
-
-        $book = new Library();
-        $book->setTitle((string) $title);
-        $book->setIsbn((string) $isbn);
-        $book->setWriter((string) $writer);
-        $book->setImage((string) $image);
-
-        // tell Doctrine you want to (eventually) save the Product
-        // (no queries yet)
-        $entityManager->persist($book);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-        $this->addFlash(
-            'notice',
-            'Book created, successfully!'
-        );
-
-        return $this->redirectToRoute('library_view_all');
-    }
-
     #[Route('/library/show/{id}', name: 'library_by_id')]
     public function showLibraryById(
         LibraryRepository $libraryRepository,
@@ -101,58 +60,6 @@ final class LibraryController extends AbstractController
         return $this->redirectToRoute('library_view_all');
     }
 
-    #[Route('/book/update/{id}', name: 'book_update')]
-    public function updateBook(
-        LibraryRepository $libraryRepository,
-        int $id
-    ): Response {
-
-        $book = $libraryRepository
-            ->find($id);
-
-        $data = [
-            'book' => $book
-        ];
-
-        return $this->render('library/book_update.html.twig', $data);
-    }
-
-    #[Route('/library/update', name: 'library_update', methods:['POST'])]
-    public function updateLibrary(
-        Request $request,
-        ManagerRegistry $doctrine
-    ): Response {
-        $entityManager = $doctrine->getManager();
-        $id = $request->request->get('id');
-        $book = $entityManager->getRepository(Library::class)->find($id);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$id
-            );
-        }
-
-        // Getting form data from POST
-        $title = $request->request->get('title');
-        $writer = $request->request->get('writer');
-        $isbn = $request->request->get('isbn');
-        $image = $request->request->get('image');
-
-        $book->setTitle((string) $title);
-        $book->setIsbn((string) $writer);
-        $book->setWriter((string) $isbn);
-        $book->setImage((string) $image);
-
-        $entityManager->flush();
-
-        $this->addFlash(
-            'notice',
-            'Book updated, successfully!'
-        );
-
-        return $this->redirectToRoute('library_view_all');
-    }
-
     #[Route('/library/view', name: 'library_view_all')]
     public function viewAllLibrary(
         LibraryRepository $libraryRepository
@@ -173,7 +80,6 @@ final class LibraryController extends AbstractController
         $books = $libraryRepository
             ->findAll();
 
-        //return $this->json($books);
         $response = $this->json($books);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
