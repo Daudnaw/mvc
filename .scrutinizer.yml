@@ -13,7 +13,7 @@ build:
                 php:
                     version: 8.3.3
                 node: true
-            before_commands:
+            commands:
                 - node -v
                 - npm install
                 - npm run build
