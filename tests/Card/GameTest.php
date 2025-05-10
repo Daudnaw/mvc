@@ -48,4 +48,28 @@ class GameTest extends TestCase
         $this->assertInstanceOf(Card::class, $card);
         $this->assertEquals(51, $game->getCount());
     }
+
+    /**
+     * Test gamecards
+     */
+    public function testGetGameCards(): void
+    {
+        $card1 = $this->createMock(Card::class);
+        $card1->method('getAsString')->willReturn('4s');
+
+        $card2 = $this->createMock(Card::class);
+        $card2->method('getAsString')->willReturn('AS');
+
+        $card3 = $this->createMock(Card::class);
+        $card3->method('getAsString')->willReturn('KH');
+
+        $cards = [$card1, $card2, $card3];
+
+        $game = new Game();
+
+        $result = $game->getGameCards($cards);
+
+        $this->assertEquals(['4s', 'AS', 'KH'], $result);
+    }
 }
+
