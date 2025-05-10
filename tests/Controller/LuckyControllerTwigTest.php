@@ -6,8 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class LuckyControllerTwigTest extends WebTestCase
 {
-    public function testDummy(): void
+    public function testHomeRoute(): void
     {
-        $this->assertTrue(true);
+        $client = static::createClient();
+        $client->request('GET', '/');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('title', 'Home');
     }
 }
