@@ -58,7 +58,7 @@ class Game extends Deck
      * Converts an array of Card objects into their string representations.
      *
      * @param Card[] $drawnCards An array of Card objects to convert.
-     * 
+     *
      * @return string[] An array of strings representing each card.
      */
     public function getGameCards(array $drawnCards): array

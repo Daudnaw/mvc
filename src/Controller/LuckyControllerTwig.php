@@ -70,4 +70,11 @@ class LuckyControllerTwig extends AbstractController
         return $this->redirectToRoute('session');
     }
 
+    #[Route("/metrics", name: "metrics")]
+    public function metrics(): Response
+    {
+        //Go to the report for clean code
+
+        return $this->render('metrics.html.twig');
+    }
 }
