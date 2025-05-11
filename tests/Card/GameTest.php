@@ -72,4 +72,3 @@ class GameTest extends TestCase
         $this->assertEquals(['4s', 'AS', 'KH'], $result);
     }
 }
-
