@@ -1,0 +1,166 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+    <h1>Metrics</h1>
+    <h2>Introduktion</h2>
+        <p>
+            Codestyle handlar om hur man definierar variabler, är man konsekvent med strukturen, exempelvis indenteringar. Det påverkar inte kodkvalitet funktionellt
+            men när det läsbarhet och underhåll av programmet och samarbete med andra programmerare då kan kodstil ha stora konsekvenser för kodkvalite.
+        </p>
+        <p>
+            Coverage handlar om hur mycket av koden som testas. Hög coverage innebär inte direkt att koden är bra och bugfri men den signalerar iaf. att kod skrivaren
+            har testat sin kod så att den bör ha en bra kodkvalitet. Där låg testtäckning signalerar potential risk för kodkvalitet. Mina Controll-klasser sticker ut
+            eftersom det finns inga unittester för dem i min kod just nu. Mina andra klasser har jag 97% coverage på men 0% på controll vilket leder till att jag får
+            endast 13% badge för coverage.
+        </p>
+        <p>
+            Complexity tyder på hur många beslut en kodblock måste ta. Exempel på kodblock är if, else ,which osv. Det vill säga ju större komplexitet desto svårare
+            blir att förstå koden och utveckla den. Det kan ses i min kod där controll-klasser sticker ut lite eftersom de är stora och har många beslutspunkter.
+            CarControllTwig har en komplexitet på 11 enligt metrics.
+        </p>
+        <p>
+            Cohesion handlar om hur väl metoden hänger ihop med klassen. Lägre värde på cohesion innebär hög cohesion vilket betyder att en metod tillhör verkligen rätt
+            klass. Däremot en högre värde på cohesion indikerar lägre cohesion vilket innebär en klass med många ansvar och klassen bör delas i mindre klasser så att
+            varje klass har ett fokuserat ansvar.
+        </p>
+        <p>
+            Coupling handlar om beroende mellan olika klasser. Det finns två ytterligare kategorier av coupling: Afferent coupling och Efferent coupling. Afferent
+            coupling beskriver nummer av klasser som påverkas av en given klass medan Efferent coupling beskriver nummer av klasser som en given klass blir påverkad av.
+            Det är lägre coupling som bör eftersträvas. Det gör programmet mer flexibel så att det är lättare att testa kod, lättare att utveckla och ändra koden. I min
+            kod går det att se att mina kontroll klasser verkar har 1 index när det gäller coupling medan andra klasser varierar mellan 0 och 0.6.
+        </p>
+        <p>
+            CRAP- Change Risk Analyser och Predictor kombinerar hur komplex en metod är och hur många testar som täcker en metod. Det är inte dåligt för kodkvalite att
+            ha komplex metod men då bör det finnas tillräcklig mycket med tester för att täcka metoden när det gäller CRAP-index. Sen kan komplexitet i en metod innebära
+            att det blir svårläst och svårare att underhålla som i sin tur påverkar kodkvalitet.
+        </p>
+    <h2>Phpmetrics</h2>
+        <p>
+            Det finns mycket att skriva här men jag har hittat tre områden som direkt eller indirekt kan kopplas till 6:C som har nämnts här ovan. Jag har 6 violation
+            som ska kunna förbättras i min kod. Ett annat svag punkt som jag hittar är att mina Controll-klasser är för stora dvs. de har en alltför stort volume där
+            CardControll stycker ut med ett värde på 2017,61 högsta av alla andra. Det visas också att mina controll-klasser har hög komplexitet där är det också
+            CardControll som har högsta komplexiteten som kanske inte är så konstigt eftersom den har störst volum också. De här tre områdena som ska kunna förbättras
+            och pga. de får väl mina controll-klasser sämre maintainability index med större komplexitet.
+        </p>
+        <figure class="figure center">
+            <img src="{{ asset('build/images/metrics.png') }}" width="400" class="in" alt="Flow Chart">
+            <figcaption>Metrics chart</figcaption>
+        </figure>
+    <h2>Scrutinizer</h2>
+        <p>
+            I Scrutinizer ser min kod mycket bättre ut och det verkar svårare att hitta fel men jag har kartlagt tre svaga punkter. Här dyker också upp testtäckning som
+            ett problem. Jag har 97.1% testtäckning på mina Card-klasser medan 0% på mina Controll-klasser vilket leder till att endast 64 av 481 rader testas. Två av
+            metoderna verkar mycket komplexa som får 20 CRAP-index som då är gult. Det finns också 3 issues bland annat csfix och library metoder enligt scrutinizer.
+        </p>
+        <figure class="figure center">
+            <img src="{{ asset('build/images/scrutinizer.png') }}" width="400" class="in" alt="Flow Chart">
+            <figcaption>Betyg och badges</figcaption>
+        </figure>
+    <h2>Findings</h2>
+         <p>
+            Jag förstår och upplever att alla kriterier på ett och ett annat sätt hänger samman. Exempelvis som det har nämnts här ovan Complexity som då är en
+            indikation på hur många beslutspunkter finns i en metod eller kodblock har en direkt koppling med CRAP. Dvs. ju högre komplexitet desto högre CRAP i fall
+            det inte testas ordentligt. Coverage dyker upp här som kan balansera komplexitet så att kodkvaliteten blir bättre. Issues som har nämnt ovan kan i vissa
+            fall kopplas till Complexity och till Coverage i några andra. Enligt phpmetrics kan några av mina klasser ha buggar därför bör de testas mer specifikt
+            Controll-klasser. En annan issue handlar om att förmodligen är en av mina vanliga klasser för komplexa och en Controll-klass som har koppling till databas.
+        </p>
+         <p>
+            En faktor som inte ingår i 6:C är storleken (size and volume) på koden. Jag upplever att den påverkar direkt alla 6:C. Ju större volume desto större risk
+            att det kommer att vara mer beslutspunkter vilket ökar komplexiteten som i sin tur ökar CRAP-index om det inte testas ordentligt. Storleken kommer också
+            förmodligen påverka Coupling eftersom ju större kod desto större risk för att beroende mellan klasser ökar.
+        </p>
+    <h2>Förbättringar</h2>
+         <p>
+            Jag har bestämt mig att arbeta med 3 förbättringar: ökad kodtäckning, fixa issues och minska komplexiteten i klasser/metoder.
+        </p>
+         <p>
+            När det kodtäckning tänker jag att jag ska försöka skapa unittester för mina Controll-klasser så att de också testas. Hittills har jag inte haft någon
+            unittest för mina Controll-klasser. Minska komplexiteten tänker jag att lösa genom att göra mindre klasser av mina Controll-klasser. Jag ska försöka hitta
+            en gemensam nämnare för varje klass så att det fortfarande finns Cohesion men de ska vara mindre komplexa och jag tänker också göra samma sak för metoder.
+            Jag har två metoder i min CardControll som har en stor komplexitet och det tänker jag att jag kan lösa genom att göra ett par redirect routes så att publica
+            API flera i antal och mindre i storleken. Issues hänger lite ihop med kodtäckning eftersom det rekommenderas av phpmetrics att några av mina klasser bör
+            testas mer och då tror jag om kodtäckning ökar då bör phpmetrics bli mer nöjd och visa att risken för buggen är mindre.
+        </p>
+         <p>
+            När det gäller kodkvalitet tror jag att genom att göra flera mindre klasser av mina Conroll-klasser och dessutom med en ökad kodtäckning kommer kodkvaliteten
+            att öka och CRAP-index blir mindre. Komplexiteten bör också bli mindre, det som jag är orolig för att Cohesion kanske påverkas så att klasser blir mer
+            splittrade. Jag ska lägga fokus på att hitta ett fokus för varje Controll-klass så att det inte blir oreda bland mina klasser.
+        </p>
+    <h2>Implementation och resultat</h2>
+         <p>
+            En av områdena som jag fokuserade på för att förbättra var att öka testtäckning och jag har lyckats höja coverage en hel del. Från början var det endast 13%
+            coverage på min kod men efter att ha testat mina Controll-klasser har jag nu landat på 42%. Det hade kunnat bli bättre än så, men jag tar anledning till
+            misslyckandet i diskussionen sen. 
+        </p>
+        <figure class="figure center">
+            <img src="{{ asset('build/images/scrutinizernew.png') }}" width="400" class="in" alt="Flow Chart">
+            <figcaption>New badges</figcaption>
+        </figure>
+         <p>
+            Andra fokusområdet var att minska komplexiteten på mitt program. Innan förändringen hade jag totalt 11 klasser och nu efter att ha bearbetat har jag landat
+            på 17 klasser totalt som då har bidragit med mindre komplexitet. Enligt metrics hade jag största Cyclomatic på 11 för CardControll men nu har CardControll
+            istället en komplexitet på 3 men volum 485. Jag har delat klassen ytterligare i tre delar så att varje klass får sitt eget område så att det blir även
+            lättare att hantera klasserna. Det har gjorts samma sak med några andra klasser också. Samma klass hade en komplexitet på 20 enligt scrutinizer och nu efter
+            bearbetning ligger komplexitet på 7 istället.
+        </p>
+        <figure class="figure center">
+            <img src="{{ asset('build/images/metricsnew.png') }}" width="400" class="in" alt="Flow Chart">
+            <figcaption>Metrics chart</figcaption>
+        </figure>
+         <p>
+            Jag har också skrivit om lite kod i mina egna klasser så att komplexitet för metoder har också ändrats. Exempelvis gameBank() har haft en komplexitet på 4
+            och CRAP 20 men nu ligger komplexitet på 3 och CRAP index på 12 och exakt samma sak gäller för gamePlay(). Jag har flyttat in koden/metoder från
+            Controll-klasser till mina klasser så att kod i Controll-klasser blir ännu tunnare.
+        </p>
+         <p>
+            Det fanns sex violation på metrics där tre var probably bugged för HomeControllJson, CarControllerTwig och LibraryController. Library var även markerad som
+            en Blob/God object. På Scrutinizer fanns också tre andra issues. Bland annat type på inputen till bookSetter() i library och varning om CS-fix.
+        </p>
+        <p>
+            Tre issues på metrics har jag kunnat fixa genom att dela library klassen i tre olika klasser där en klass för läsa/visa och delete. En klass för att skapa
+            och en separat klass för att uppdatera. CardControll och HomeControll också kunde lösas eftersom storleken på de har ändrats nu. Det finns flera klasser nu
+            så att de har mindre ansvar och därför tror jag att probably bugged issue är löst. I Scrutinizer har jag kunnat lösa två problem om library metoder men
+            Cs-fix issue har jag inte kunnat fixa. Enligt instruktionen ska jag sätta en depencie i scrutinizer.yml och jag har försökt men problemet har inte kunnat
+            lösas.
+        </p>
+    <h2>Diskussion</h2>
+         <p>
+            Jag har lagt betydligt mer tid på att fixa koden än vad jag hade trott. Jag hade kunnat få mycket bättre coverage på mitt badge. Jag hade skapat tester för
+            mina Controll-twig klasser som gick genom lokalt och jag fick bättre coverage men på scrutinizer misslyckade build så fort unittester handlade om html. Jag
+            la lite för mycket tid på att lösa det och jag gav upp efter ett tag. Nu har jag iaf. unittester för de flesta av mina Controll-Json klasser och på det viset
+            kunde coverge öka från 13% till 42%.
+        </p>
+         <p>
+            När det gäller kodkvalitet hade jag en 10:a på det innan jag började bearbeta. Där skulle jag kunna påstå att phplint hade räckt väl för att höja kvaliteten
+            på min kod. Jag har arbetat enligt phplint och det gav mig 10 däremot att få mer clean code tror jag att jag blev mer tvungen nu pga. Metrics och Scrutinizer.
+            Jag blev tvungen att dela mina klasser ytterligare så att de fick bättre cohesion. Det är enklare fokus nu vilket betyder att det är lättare att bearbeta
+            dem så att maintainability index bör också ha ökat för dem. Jag hade inte noterat det för mina klasser innan implementationer därför är det svårt att kunna
+            jämföra dem nu.
+        </p>
+         <p>
+            Jag tror att det finns många fördelar men jag upplever att jag kommer att tänka på alla dessa faktorer nu när jag skriver kod och på det viset blir det
+            fördelaktigt. Däremot att gå in och arbeta i efterhand verkar lite frustrerande. Exempelvis har en av mina routes hög komplexitet och jag har försökt att
+            bryta ner den metoden men det gick inte. Logiken i den är byggd på det viset eftersom att jag anropar session och jag kan inte göra det utanför metoden.
+            Vissa saker blir svårare att lösa i efterhand men i framtiden blir det säkert fördelaktigt att tänka i de här banorna och få en snyggare kod.
+        </p>
+         <p>
+            Nackdelen kan vara att man börjar jaga betyg och det kostar tid och pengar. I vissa fall blir det nästan paradoxalt att efterleva alla kriterier. Exempelvis
+            ska vi försöka hålla cohesion så att klasserna har sin egen fokus men det kan också bidra till komplexiteten. Min library klass har en större komplexitet
+            än jag skulle önska men den har endast metoder setter och getter och det känns lite onödigt att bryta ner den klassen. Samma för min deck klass att alla
+            metoder passar väl för just den klassen och de bör inte flyttas till en annan enligt min tolkning. Ibland får man leva med större komplexitet men jag tycker
+            att den ska kunna motiveras varför den behövs. Sammanfattningsvis, det största nackdelen är att det är kostsamt att jaga perfektion, ibland kanske räcker
+            det med att koden fungerar.
+        </p>
+        <figure class="figure center">
+            <img src="{{ asset('build/images/betyga.png') }}" width="400" class="in" alt="Flow Chart">
+            <figcaption>Betyg Scrutinizer</figcaption>
+        </figure>
+         <p>
+            Jag tycker att andra möjligheter än metrics och scrutinizer för att skriva clean code är det som vi har använt under kursens gång. Phpunit, phpmd och
+            phplint. Unittester direkt och indirekt tvingar en att tänka på att skapa en enkel och clean code så att det blir lättare att testa. De andra nämnda verktyg
+            tycker jag mycket bra och beviset är att jag fick en 10:a och A på alla mina klasser bara för att jag hade bearbetat min kod enligt dem annars hade nog jag
+            behövt arbeta mer med kodkvalitet.
+        </p>
+{% endblock %}
