@@ -74,15 +74,16 @@ class Game extends Deck
     /**
      * Draw cards for the bank until its total is at 17.
      *
-     * @param array $drawnCards The cards drawn in the game.
+     * @param CardGraphic[] $drawnCards The cards drawn in the game.
      * @param int $totalBank The current total value of the bank's hand.
-     * @return array An associative array with 'cards'
+     * @return array{cards: CardGraphic[], total: int} An associative array with 'cards'
      */
     public function drawBankCards(array $drawnCards, int $totalBank): array
     {
         $bankCards = [];
 
         while ($totalBank < 17) {
+            /** @var CardGraphic $drawnCard */
             $drawnCard = $this->drawCard();
             $bankCards[] = $drawnCard;
             $cardValue = $this->getRank($drawnCard);
