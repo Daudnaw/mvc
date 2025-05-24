@@ -1,0 +1,91 @@
+{% extends "base_proj.html.twig" %}
+
+{% block title %}Main display{% endblock %}
+
+{% block body %}
+
+    <div class="table-layout">
+   <form method="post" action="{{ path('discard_one') }}">
+    <input type="hidden" name="playerOne" value="playerOne">
+
+    <div class="player">
+    <div class="deck-container">
+        <h3>Player One</h3>
+
+        {% for value in playerOne %}
+            {% set rank = value|slice(1, value|length - 3) %}
+            {% set suit = value|slice(-2, 1) %}
+            {% set cardId = loop.index0 %}
+
+            <label style="display: inline-block; cursor: pointer;">
+                <input type="checkbox" name="cardsToChange[]" value="{{ cardId }}" style="display: none;">
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            </label>
+        {% endfor %}
+    </div>
+
+    <button type="submit">Change selected cards</button>
+</form>
+</div>
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerMonkey is iterable %}
+            <h3>Monkey</h3>
+            {% for value in playerMonkey %}
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerComputer is iterable %}
+            <h3>Computer</h3>
+            {% for value in playerComputer %}
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerTwo|length == 5 %}
+            <h3>PlayerTwo</h3>
+            {% for value in playerTwo %}
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+    
