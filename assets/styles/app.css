@@ -64,11 +64,11 @@ h3 {
     margin-bottom: 1em;
 }
 
-@import "header.css";
-@import "navbar.css";
-@import "flash.css";
-@import "table.css";
-@import "deck";
-@import "img.css";
-@import "two_column_layout";
-@import "footer.css";
+@import "app/header.css";
+@import "app/navbar.css";
+@import "app/flash.css";
+@import "app/table.css";
+@import "app/deck";
+@import "app/img.css";
+@import "app/two_column_layout";
+@import "app/footer.css";
