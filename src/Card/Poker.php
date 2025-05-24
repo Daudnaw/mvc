@@ -1,0 +1,160 @@
+<?php
+
+namespace App\Card;
+
+use App\Card\Deck;
+
+/**
+ * Class Game
+ *
+ * This class inherits from Deck and some function to play twentyOne
+ */
+class Poker extends Deck
+{
+    /**
+     * Creates new Deck of 52 cards without jokers
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * This function gives rank as integer and also a number for A, K, Q and J
+     *
+     * @return int $rank as an integer
+     */
+    public function getRank(Card $card): int
+    {
+        $rank = $card->getRank();
+
+        $cardValues = [
+            'A' => 14,
+            'K' => 13,
+            'Q' => 12,
+            'J' => 11
+        ];
+
+        return $cardValues[$rank] ?? (int) $rank;
+    }
+
+    public function getHighCard(array $hand): int
+    {
+        $ranks = array_map([$this, 'getRank'], $hand);
+        return max($ranks);
+    }
+
+    public function getRankFreq(array $hand): array
+    {
+        $frequencies = [];
+
+        foreach ($hand as $card) {
+            $rank = $card->getRank();
+            if (!isset($frequencies[$rank])) {
+                $frequencies[$rank] = 0;
+            }
+            $frequencies[$rank]++;
+        }
+
+        return $frequencies;
+    }
+
+    public function isPair(array $hand): bool
+    {
+        foreach ($this->getRankFreq($hand) as $count) {
+            if ($count === 2) return true;
+        }
+        return false;
+    }
+
+    public function isTwoPair(array $hand): bool
+    {
+        $pair = 0;
+        foreach ($this->getRankFreq($hand) as $count) {
+            if ($count === 2) $pair++;
+        }
+        return $pair >= 2;
+    }
+
+    public function isThree(array $hand): bool
+    {
+        return in_array(3, $this->getRankFreq($hand));
+    }
+
+    public function isFour(array $hand): bool
+    {
+        return in_array(4, $this->getRankFreq($hand));
+    }
+
+    public function isFullHouse(array $hand): bool
+    {
+        $frequency = $this->getRankFreq($hand);
+        return in_array(3, $frequency) && in_array(2, $frequency);
+    }
+
+    public function isStraight(array $hand): bool
+    {
+        $ranks = array_map([$this, 'getRank'], $hand);
+        $ranks = array_unique($ranks);
+        sort($ranks);
+
+        if ($ranks === [2, 3, 4, 5, 14]) {
+            return true;
+        }
+
+        if(count($ranks) === 5) {
+            $mini = $ranks[0];
+            if($ranks === range($mini, $mini+4)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function isFlush(array $hand): bool
+    {
+        $firstSuit = $hand[0]->getSuit();
+
+        foreach ($hand as $card) {
+            if ($card->getSuit() !== $firstSuit) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function isStraightFlush(array $hand): bool
+    {
+        return $this->isFlush($hand) && $this->isStraight($hand);
+    }
+
+    public function isRoyalFlush(array $hand): bool
+    {
+        //if(!$this->isStraightFlush($hand)) {
+        //    return false;
+        //}
+
+        $ranks = array_map([$this, 'getRank'], $hand);
+        sort($ranks);
+
+        return $ranks === [10, 11, 12, 13, 14];
+    }
+
+    public function evaluateHand(array $hand): int
+    {
+        if ($this->isRoyalFlush($hand)) return 150;
+        if ($this->isStraightFlush($hand)) return 135;
+        if ($this->isFour($hand)) return 120;
+        if ($this->isFullHouse($hand)) return 105;
+        if ($this->isFlush($hand)) return 90;
+        if ($this->isStraight($hand)) return 75;
+        if ($this->isThree($hand)) return 60;
+        if ($this->isTwoPair($hand)) return 45;
+        if ($this->isPair($hand)) return 30;
+
+        return $this->getHighCard($hand);
+    }
+
+}
