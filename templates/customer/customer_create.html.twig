@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a customer{% endblock %}
+
+{% block body %}
+
+<form class="label-left" method="post" action="{{ path('customer_create_post') }}">
+    <fieldset>
+        <legend>Add a customer</legend>
+
+        <label for="forname">Forname</label>
+        <input id="forname" type="text" name="forname">
+
+        <label for="aftername">Aftername</label>
+        <input id="aftername" type="text" name="aftername">
+
+
+        <label for="adress">Adress</label>
+        <input id="adress" type="text" name="adress">
+
+        <label for="tele">Telefon</label>
+        <input id="tele" type="text" name="tele">
+
+        <input type="submit" name="doit" value="Add customer">
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+
+{% extends 'base_proj.html.twig' %}
+
+{% block title %}My Api{% endblock %}
+
+{% block body %}
+
+<h1>Test my JSON API</h1>
+
+<ul>
+    <p>add information about every link before everylin what it does</p>
+    <li><a href="{{ path('api_about') }}" target="_blank">Deal first round</a></li>
+    <li><a href="{{ path('api_hands') }}" target="_blank">Watch all the hands</a></li>
+    <li><a href="{{ path('api_computer') }}" target="_blank">Speculate smart computer</a></li>
+    <li><a href="{{ path('api_points') }}" target="_blank">Who is the winner?</a></li>
+    <li><a href="{{ path('api_show_customers') }}" target="_blank">Show all the registered Gamblers</a></li>
+</ul>
+
+<h2>POST</h2>
+<form method="POST" action="{{ path('api_monkey') }}">
+    <label for="number">Change 1 to 5 cards for monkey:</label>
+    <input type="number" name="number" min="1" max="5" required>
+    <button type="submit">Change</button>
+</form>
+
+{% endblock %}
+

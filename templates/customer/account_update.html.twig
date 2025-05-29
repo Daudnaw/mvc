@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add balance{% endblock %}
+
+{% block body %}
+
+<form class="label-left" method="post" action="{{ path('update_account_balance') }}">
+    <fieldset>
+        <legend>Update balance</legend>
+
+        <label for="id">Acount id</label>
+        <input id="id" type="int" name="id">
+
+        <label for="amount">Add Balance</label>
+        <input id="amount" type="int" name="amount">
+
+        <input type="submit" name="doit" value="Add balance">
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
+
+
+
+

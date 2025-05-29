@@ -1,0 +1,27 @@
+{% extends 'base_proj.html.twig' %}
+
+{% block title %}Hello LibraryController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Welcome to the Library</h1>
+
+    <p>
+        You have few options. You can either create or delete a gambler from casino.
+    </p>
+    <p>
+        For deleting a customer you need customers id. Go to API in the navbar and click on link
+        which says see all gamblers. There you can see the id of all customers.
+    </p>
+
+    <ul>
+        <li><a href="{{ path('customer_create') }}">Add new Gambler</li>
+        <li><a href="{{ path('customer_delete') }}">Delete a Gambler</li>
+    </ul>
+
+</div>
+
+{{ include('flash.html.twig') }}
+{% endblock %}
+

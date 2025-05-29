@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a customer{% endblock %}
+
+{% block body %}
+
+<form class="label-left" method="post" action="{{ path('customer_delete_id') }}">
+    <fieldset>
+        <legend>Delete a gambler</legend>
+
+        <label for="id">Customer id</label>
+        <input id="id" type="int" name="id">
+
+        <input type="submit" name="doit" value="Delete customer">
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
+
+
+
+

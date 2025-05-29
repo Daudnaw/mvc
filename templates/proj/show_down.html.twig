@@ -1,0 +1,14 @@
+{% extends 'base_proj.html.twig' %}
+
+{% block title %}ShowDown{% endblock %}
+
+{% block body %}
+
+<h1>Show Down</h1>
+<p>The winner is with points. {{winnerScore}} {{winnerPlayer}}</p>
+<p>you won money {{winnerPrice}}</p>
+
+<ul>
+    <li><a href="{{ path('proj_start') }}">Start again</li>
+</ul>
+{% endblock %}

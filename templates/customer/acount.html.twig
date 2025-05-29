@@ -1,0 +1,28 @@
+{% extends 'base_proj.html.twig' %}
+
+{% block title %}Acount{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Welcome to customer database</h1>
+
+    <p>
+        You have few options. You can either create or update acount for an existing customer.
+    </p>
+    <p>
+        For updating an acount you need acount id. Go to API in the navbar and click on link
+        which says see all gamblders. There you can see the id of all customers and acounts.
+    </p>
+
+    <ul>
+        <li><a href="{{ path('acount_create') }}">Add an account</li>
+        <li><a href="{{ path('acount_update') }}">Update an acount</li>
+    </ul>
+
+</div>
+
+{{ include('flash.html.twig') }}
+{% endblock %}
+
+

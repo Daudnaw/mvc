@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add balance{% endblock %}
+
+{% block body %}
+
+<form class="label-left" method="post" action="{{ path('acount_create_post') }}">
+    <fieldset>
+        <legend>Add an acount</legend>
+
+        <label for="forname">Forname</label>
+        <input id="forname" type="text" name="forname">
+
+        <label for="balance">Balance</label>
+        <input id="balance" type="integer" name="balance">
+
+        <label for="customer_id">CustomerId</label>
+        <input id="customer_id" type="integer" name="customer_id">
+
+        <input type="submit" name="doit" value="Create acount">
+    </fieldset>
+</form>
+
+{% endblock %}
+
+
+
+
+
+

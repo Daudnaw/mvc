@@ -1,0 +1,18 @@
+{% extends 'base_proj.html.twig' %}
+
+{% block title %}RaiseOne{% endblock %}
+
+{% block body %}
+
+<form class="label-left" method="post" action="{{ path('check_to_two') }}">
+    <fieldset>
+        <legend>Raise</legend>
+
+        <label for="raise">Title</label>
+        <input id="raiseOne" type="number" name="raiseOne">
+
+        <input type="submit" name="doit" value="raiseOne">
+    </fieldset>
+</form>
+
+{% endblock %}

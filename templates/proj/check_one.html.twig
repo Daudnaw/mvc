@@ -1,0 +1,149 @@
+{% extends "base_proj.html.twig" %}
+
+{% block title %}Main display{% endblock %}
+
+{% block body %}
+    <p>Betting round One</p>
+    <div class="table-layout">
+   <form method="post" action="{{ path('discard_one') }}">
+    <input type="hidden" name="playerOne" value="playerOne">
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerOne|length == 5 %}
+        <h3>Player One</h3>
+
+        {% for value in playerOne %}
+            {% set rank = value|slice(1, value|length - 3) %}
+            {% set suit = value|slice(-2, 1) %}
+            {% set cardId = loop.index0 %}
+
+            <label style="display: inline-block; cursor: pointer;">
+                <input type="checkbox" name="cardsToChange[]" value="{{ cardId }}" style="display: none;">
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            </label>
+        {% endfor %}
+        
+        {% if checkOne == '1' %}
+            <div class="player-actions">
+                <form method="post" action="{{ path('check_one_one') }}">
+                    <input type="hidden" name="player" value="playerTwo">
+                </form>
+
+                <form method="post" action="{{ path('check_one_one') }}">
+                    <input type="hidden" name="player" value="playerOne">
+                    <button type="submit">Check</button>
+                </form>
+
+                <form method="post" action="{{ path('fold_one_one') }}">
+                    <input type="hidden" name="player" value="playerOne">
+                    <button type="submit">Fold</button>
+                </form>
+
+                <form action="{{ path('raise_one_one') }}">
+                    <input type="hidden" name="player" value="raiseOne">
+                    <button type="submit">Raise</button>
+                </form>
+            </div>
+        {% endif %}
+
+        {% endif %}
+    </div>
+
+</form>
+</div>
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerMonkey is iterable %}
+            <h3>Monkey</h3>
+            {% for value in playerMonkey %}
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerComputer is iterable %}
+            <h3>Computer</h3>
+            {% for value in playerComputer %}
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+        
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+    <form method="post" action="{{ path('discard_two') }}">
+    <input type="hidden" name="playerTwo" value="playerTwo">
+
+    <div class="player">
+    <div class="deck-container">
+        {% if playerTwo|length == 5 %}
+            <h3>PlayerTwo</h3>
+            {% for value in playerTwo %}
+                {% set rank = value|slice(1, value|length - 3) %}
+                {% set suit = value|slice(-2, 1) %}
+                {% set cardId = loop.index0 %}
+
+                <label style="display: inline-block; cursor: pointer;">
+                <input type="checkbox" name="cardsToChange[]" value="{{ cardId }}" style="display: none;">
+
+                <div class="card {% if suit in ['♥', '♦'] %}red{% else %}black{% endif %}">
+                    <div class="corner top-left">{{ rank }}</div>
+                    <div class="corner bottom-right">{{ rank }}</div>
+                    <div class="suit">{{ suit }}</div>
+                </div>
+                </label>
+            {% endfor %}
+
+
+            {% if checkTwo == '1' %}
+                    <div class="player-actions">
+                        <form method="post" action="{{ path('call_two_one') }}">
+                            <input type="hidden" name="player" value="playerTwo">
+                        </form>
+
+                        <form method="post" action="{{ path('call_two_one') }}">
+                            <input type="hidden" name="player" value="playerTwo">
+                            <button type="submit">Call</button>
+                        </form>
+
+                        <form method="post" action="{{ path('fold_two_one') }}">
+                            <input type="hidden" name="player" value="playerTwo">
+                            <button type="submit">Fold</button>
+                        </form>
+
+                        <form action="{{ path('raise_from_two_one') }}">
+                            <input type="hidden" name="player" value="playerTwo">
+                            <button type="submit">Raise</button>
+                        </form>
+                    </div>
+                    {% endif %}
+            {% endif %}
+    
+    </div>
+
+    </form>
+</div>
+</div>
+{% endblock %}
