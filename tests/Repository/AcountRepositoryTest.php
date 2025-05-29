@@ -48,29 +48,26 @@ class AccountRepositoryTest extends KernelTestCase
     }
 
     public function testFindBalanceById(): void
-{
-    // Create a customer
-    $customer = new Customer();
-    $customer->setForname('John');
-    $customer->setAftername('Smith');
-    $customer->setAdress('Main St');
-    $customer->setTelefon('123456');
-    $this->entityManager->persist($customer);
+    {
+        $customer = new Customer();
+        $customer->setForname('John');
+        $customer->setAftername('Din');
+        $customer->setAdress('Din din');
+        $customer->setTelefon('123456');
+        $this->entityManager->persist($customer);
 
-    // Create an account
-    $account = new Acount();
-    $account->setForname('Ali');
-    $account->setBalance(777);
-    $account->setCustomer($customer);
-    $this->entityManager->persist($account);
-    $this->entityManager->flush();
+        $account = new Acount();
+        $account->setForname('Ali');
+        $account->setBalance(677);
+        $account->setCustomer($customer);
+        $this->entityManager->persist($account);
+        $this->entityManager->flush();
 
-    // Test the repository method
-    $repo = $this->entityManager->getRepository(Acount::class);
-    $balance = $repo->findBalanceById($account->getId());
+        $repo = $this->entityManager->getRepository(Acount::class);
+        $balance = $repo->findBalanceById($account->getId());
 
-    $this->assertEquals(777, $balance);
-}
+        $this->assertEquals(777, $balance);
+    }
 
 
     protected function tearDown(): void
