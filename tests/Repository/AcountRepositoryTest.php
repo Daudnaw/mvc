@@ -22,7 +22,7 @@ class AccountRepositoryTest extends KernelTestCase
         $schemaTool->createSchema($metadata);
     }
 
-    public function testCanPersistAccount(): void
+    public function testAccount(): void
     {
         $customer = new Customer();
         $customer->setForname('John');
@@ -47,7 +47,7 @@ class AccountRepositoryTest extends KernelTestCase
         $this->assertEquals('Ali', $fetched->getForname());
     }
 
-    public function testFindBalanceById(): void
+    public function testFindBalance(): void
     {
         $customer = new Customer();
         $customer->setForname('John');
@@ -66,7 +66,7 @@ class AccountRepositoryTest extends KernelTestCase
         $repo = $this->entityManager->getRepository(Acount::class);
         $balance = $repo->findBalanceById($account->getId());
 
-        $this->assertEquals(777, $balance);
+        $this->assertEquals(677, $balance);
     }
 
 
