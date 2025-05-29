@@ -14,7 +14,7 @@
         {{ encore_entry_script_tags('project') }}
     {% endblock %}
 </head>
-<body>
+<body style="background-image: url({{ asset('img/poker.png') }})">
     <header class="site-header" >
         <h1 class="title">Five-Card Draw</h1>
         <p class="subtitle">♠ Poker Experience ♣</p>
@@ -27,9 +27,9 @@
             <li><a href="{{ path('lucky') }}">Lucky</a></li>
             <li><a href="{{ path('session') }}">Session</a></li>
             <li><a href="{{ path('card') }}">Card</a></li>
-            <li><a href="{{ path('game') }}">Game</a></li>
-            <li><a href="{{ path('app_library') }}">Library</a></li>
-            <li><a href="{{ path('metrics') }}">Metrics</a></li>
+            <li><a href="{{ path('app_customer') }}">Customer</a></li>
+            <li><a href="{{ path('app_acount') }}">Accounts</a></li>
+            <li><a href="{{ path('api_overview') }}">Api</a></li>
             <li><a href="{{ path('proj') }}">Project</a></li>
         </ul>
     </nav>

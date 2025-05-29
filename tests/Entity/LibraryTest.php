@@ -7,6 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class LibraryTest extends TestCase
 {
+    public function testInitialId(): void
+    {
+        $library = new Library();
+        $this->assertNull($library->getId());
+    }
+
     public function testSetterAndGetter(): void
     {
         $library = new Library();
