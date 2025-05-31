@@ -66,11 +66,11 @@ class ShowDownControllerTwig extends AbstractController
         //checking
         $entityManager = $doctrine->getManager();
 
-        $acountOne = $entityManager->getRepository(Acount::class)->find(4);
-        $acountTwo = $entityManager->getRepository(Acount::class)->find(5);
-        $acountMonkey = $entityManager->getRepository(Acount::class)->find(6);
-        $acountComputer = $entityManager->getRepository(Acount::class)->find(7);
-        $acountHouse= $entityManager->getRepository(Acount::class)->find(8);
+        $acountOne = $entityManager->getRepository(Acount::class)->find(1);
+        $acountTwo = $entityManager->getRepository(Acount::class)->find(4);
+        $acountMonkey = $entityManager->getRepository(Acount::class)->find(2);
+        $acountComputer = $entityManager->getRepository(Acount::class)->find(3);
+        $acountHouse= $entityManager->getRepository(Acount::class)->find(5);
         //checking
         $score = $session->get('score');
         $player = ['Player One', 'Monkey Shonkey', 'Computer Shuter', 'Player Two'];

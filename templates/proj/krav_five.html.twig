@@ -1,0 +1,61 @@
+{% extends "base_proj.html.twig" %}
+
+{% block title %}KravFive{% endblock %}
+
+{% block body %}
+    <h1>Krav 5: ORM</h1>
+    <h3>ER-diagram</h3>
+        <figure class="figure center">
+            <img src="{{ asset('build/images/er_proj.png') }}" width="600" class="in" alt="ER diagram">
+            <figcaption>ER-Diagram</figcaption>
+        </figure>
+    <h3>Tabellen</h3>
+    <p>
+        Jag har skapat en five draw spel där kunder får gambla därför tänkte jag att det var lämpligt att ha customers sparade och databasen och de bör ha pengar hos mig också
+        om de ska kunna spela. Jag har två tabeller:
+    </p>
+    <p>
+        Customer: I den här tabellen sparas kunderna id, fornamn, efternamn, adress och deras telefon där id är Primary key.
+    </p>
+    <p>
+        Acount: I den här tabellen sparas accounts id, fornamn, balance och customer_id, där id är Primary Key for Acount medan customer_id är Foreign Key som är Primary Key
+        i Customer.
+    </p>
+    <h3>Relationer</h3>
+    <p>
+        Customer och Acount har oneToMany eller ManyToOne relation beroende på från vilket perspektiv man tittar på relation. Dvs. en Customer kan ha många Acount men en
+        Acount tillhör endast en Customer. 
+    </p>
+    <h3>SQLite eller mariadb</h3>
+    <p>
+        Jag har inte försökt att prova på nya saker pga. tidspress när det projektet. Därför har jag fortsatt att arbeta med SQLite så som jag gjorde i kmom05.
+    </p>
+    <h3>Databas och enhetstester</h3>
+    <p>
+        Jag gjorde tester mot entity och repository också. När jag gjorde untitester mot metoder i entity var det precis som alla andra metoder och det gick bra utan bekymmer.
+        När det gäller att testa databasen var jag tvungen att läsa lite mer eftersom jag inte hade någon aning innan. Jag gjorde några tabbar på vägen, exempelvis lyckades jag
+        radera bort hela min databas så att min spellogik kollapsade eftersom spelarnas konto försvann. I slutet gick det mycket bra . Nu har jag 100% coverage på entiteter
+        och repository.
+    </p>
+    <h3>SQL och ORM</h3>
+    <p>
+        Min upplevelse med ORM har varit att det är en latare version av SQL eftersom här används det lite mer användarvänliga språk. Exempelvis för att kunna skapa en
+        tabell/entity behöver jag inte kunna mycket programmering. Det fungerar bra än så länge jag kan följa instruktioner. Samma sak nu när jag skulle skapa relationer mellan
+        två entiteter var det att bara följa instruktioner. Jag behöver egentligen inte förstå databaser. Det kommer upp information som beskriver vad du vill ha och då får
+        man välja. Det skulle kunna tolkas att det är lättare att arbeta med ORM men jag upplever att det är mer abstrakt och svårt med ORM än SQL.
+    </p>
+    <p>
+        Visst är nackdelen med SQL att koden kan bli mycket, man behöver skapa egna funktioner och lagrade procedurer men man kan se hela koden. Allting var transparent och
+        det var mycket lättare att styra och ändra koden specifikt för komplexa problem. Det var mer konkret i min erfarenhet av SQL. I ORM istället gömmer tabeller bakom objekt
+        och de kan ändras via funktionalitet som följer med när man skapat entiteter. Jag upplever att jag har mindre kontroll över koden och det är svårare att felsöka när jag
+        använder ORM men det kan också vara min okunskap om ORM. Det behövs nog mer tid för att kunna undersöka och testas för min del iaf. Samtidigt kan SQL också ha några
+        nackdelar, exempelvis inget sker automatiskt  och allt behöver skrivas. Relationer måste skapas aktivt medan i ORM sker mycket automatiskt. Mina reflektioner kanske är
+        lite partiska mot SQL eftersom vi har spenderat en hel kurs för att lära oss det medan med ORM har vi inte spenderat lika mycket tid. 
+    </p>
+
+
+<ul>
+    <li><a href="{{ path('proj_about') }}">Go back to main page</li>
+</ul>
+
+{% endblock %}

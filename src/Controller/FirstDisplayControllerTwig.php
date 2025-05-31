@@ -30,11 +30,11 @@ class FirstDisplayControllerTwig extends AbstractController
         AcountRepository $acountRepository
     ): Response
     {
-        $one = $acountRepository->findBalanceById(4);
-        $two = $acountRepository->findBalanceById(5);
-        $monkey = $acountRepository->findBalanceById(6);
-        $computer = $acountRepository->findBalanceById(7);
-        $house = $acountRepository->findBalanceById(8);
+        $one = $acountRepository->findBalanceById(1);
+        $two = $acountRepository->findBalanceById(4);
+        $monkey = $acountRepository->findBalanceById(2);
+        $computer = $acountRepository->findBalanceById(3);
+        $house = $acountRepository->findBalanceById(5);
 
         $session->set("acountOne", $one);
         $session->set("acountTwo", $two);

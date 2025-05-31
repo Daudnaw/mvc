@@ -145,16 +145,31 @@ class Poker extends Deck
     public function evaluateHand(array $hand): int
     {
         if ($this->isRoyalFlush($hand)) return 150;
-        if ($this->isStraightFlush($hand)) return 135;
-        if ($this->isFour($hand)) return 120;
-        if ($this->isFullHouse($hand)) return 105;
-        if ($this->isFlush($hand)) return 90;
-        if ($this->isStraight($hand)) return 75;
-        if ($this->isThree($hand)) return 60;
-        if ($this->isTwoPair($hand)) return 45;
-        if ($this->isPair($hand)) return 30;
+        if ($this->isStraightFlush($hand)) return 135 + $this->getHighCard($hand);
+        if ($this->isFour($hand)) return 120 + $this->getValueHigh($hand, 4);
+        if ($this->isFullHouse($hand)) return 105 + $this->getValueHigh($hand, 3);
+        if ($this->isFlush($hand)) return 90 + $this->getHighCard($hand);
+        if ($this->isStraight($hand)) return 75 + $this->getHighCard($hand);
+        if ($this->isThree($hand)) return 60 + $this->getValueHigh($hand, 3);
+        if ($this->isTwoPair($hand)) return 45 + $this->getValueHigh($hand, 2);
+        if ($this->isPair($hand)) return 30 + $this->getValueHigh($hand, 2);
 
         return $this->getHighCard($hand);
+    }
+
+    public function getValueHigh(array $hand, int $frequency): ?int
+    {
+        $rank = array_map([$this, 'getRank'], $hand);
+        $counts = array_count_values($rank);
+        $matchedRanks = [];
+
+        foreach ($counts as $rank => $count) {
+            if ($count === $frequency) {
+                $matchedRanks[] = $rank;
+            }
+        }
+
+    return empty($matchedRanks) ? null : max($matchedRanks);
     }
 
 }

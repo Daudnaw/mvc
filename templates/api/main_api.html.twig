@@ -8,20 +8,43 @@
 <h1>Test my JSON API</h1>
 
 <ul>
-    <p>add information about every link before everylin what it does</p>
+    <p>
+        To test first five links you have to click on Deal first round. All four links are dependent of the fist link
+        It initiate the hands to four different player.
+    </p>
     <li><a href="{{ path('api_about') }}" target="_blank">Deal first round</a></li>
+    <p>
+        Following link shows you all the four hands conatining five cards each.
+    </p>
     <li><a href="{{ path('api_hands') }}" target="_blank">Watch all the hands</a></li>
+     <p>
+        Following link shows the cards which was dealt firstly and then computer takes a decision to keep some of the 
+        cards and discard the rest. You shall see the smart computer by comparing hands before and after decision.
+    </p>
     <li><a href="{{ path('api_computer') }}" target="_blank">Speculate smart computer</a></li>
-    <li><a href="{{ path('api_points') }}" target="_blank">Who is the winner?</a></li>
+    <p>
+        Following link gives you the value of highest card for player One. 
+    </p>
+    <li><a href="{{ path('api_high') }}" target="_blank">Highest value card</a></li>
+    <p>
+        A POST route which shows highest card for the computers hand.
+    </p>
+    <li><a href="{{ path('num', {num: 3}) }}" target="_blank">A post route shows computers highest card</a></li>
+    <p>
+        Following link shows you all the customers registered at my casino and also how much they have in there accounts.
+    </p>
     <li><a href="{{ path('api_show_customers') }}" target="_blank">Show all the registered Gamblers</a></li>
+
+    <p>Also a post input for my own checking if my monkey is working as i want. You must initiate hands first.</p>
+    <form method="POST" action="{{ path('api_monkey') }}">
+        <label for="number">Change 1 to 5 cards for monkey:</label>
+        <input type="number" name="number" min="1" max="5" required>
+        <button type="submit">Change</button>
+    </form>
 </ul>
 
-<h2>POST</h2>
-<form method="POST" action="{{ path('api_monkey') }}">
-    <label for="number">Change 1 to 5 cards for monkey:</label>
-    <input type="number" name="number" min="1" max="5" required>
-    <button type="submit">Change</button>
-</form>
+
+
 
 {% endblock %}
 

@@ -40,7 +40,7 @@ class PokerTest extends TestCase
         ];
         $this->assertTrue($this->poker->isPair($hand));
         $this->assertTrue($this->poker->isTwoPair($hand));
-        $this->assertEquals(45, $this->poker->evaluateHand($hand));
+        $this->assertEquals(53, $this->poker->evaluateHand($hand));
     }
 
     public function testIsFlush(): void
@@ -56,7 +56,7 @@ class PokerTest extends TestCase
         $this->assertTrue($this->poker->isThree($hand));
         $this->assertTrue($this->poker->isFullHouse($hand));
         $this->assertFalse($this->poker->isStraight($hand));
-        $this->assertEquals(105, $this->poker->evaluateHand($hand));
+        $this->assertEquals(108, $this->poker->evaluateHand($hand));
     }
 
     public function testIsStraight(): void
@@ -70,7 +70,7 @@ class PokerTest extends TestCase
         ];
         $this->assertTrue($this->poker->isStraight($hand));
         $this->assertFalse($this->poker->isFlush($hand));
-        $this->assertEquals(75, $this->poker->evaluateHand($hand));
+        $this->assertEquals(84, $this->poker->evaluateHand($hand));
     }
 
     public function testIsRoyalFlush(): void
@@ -96,7 +96,7 @@ class PokerTest extends TestCase
             new Card('♠', 'A'),
         ];
         $this->assertTrue($this->poker->isFour($hand));
-        $this->assertEquals(120, $this->poker->evaluateHand($hand));
+        $this->assertEquals(130, $this->poker->evaluateHand($hand));
     }
 
     public function testScore(): void
@@ -108,7 +108,34 @@ class PokerTest extends TestCase
             new Card('♠', '5'),
             new Card('♠', 'A'),
         ];
-        $this->assertEquals(135, $this->poker->evaluateHand($straightFlush));
+        $this->assertEquals(149, $this->poker->evaluateHand($straightFlush));
         $this->assertTrue($this->poker->isStraight($straightFlush));
+    }
+
+    public function testGetValueHigh()
+    {
+        $hand = [
+            new Card('♠', '5'),
+            new Card('♦', '5'),
+            new Card('♠', '6'),
+            new Card('♥', '6'),
+            new Card('♣', '6')
+        ];
+
+        $this->assertEquals(5, $this->poker->getValueHigh($hand, 2));
+        $this->assertEquals(6, $this->poker->getValueHigh($hand, 3));
+    }
+
+    public function testGetValueHighTwpPair()
+    {
+        $hand = [
+            new Card('♠', '5'),
+            new Card('♦', '5'),
+            new Card('♠', '6'),
+            new Card('♥', '6'),
+            new Card('♣', '3')
+        ];
+
+        $this->assertEquals(6, $this->poker->getValueHigh($hand, 2));
     }
 }

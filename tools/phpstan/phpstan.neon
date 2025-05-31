@@ -4,5 +4,7 @@ parameters:
         - ../../config
         - ../../src/Card
         - ../../tests/Card
+    exclude:
+    - ../../src/Card/Game.php
     bootstrapFiles:
         #- .phpstan.constants.php

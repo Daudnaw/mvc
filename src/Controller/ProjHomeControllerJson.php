@@ -192,4 +192,51 @@ class ProjHomeControllerJson extends AbstractController
         return $response;
     }
 
+    #[Route("/proj/api/highest", name: "api_high")]
+    public function jsonHigh(
+        SessionInterface $session
+    ): Response
+    {
+        //$deck = new Deck();
+        $poker = new Poker();
+
+        $allPlayer = $session->get("allPlayer");
+        
+        $high = $poker->getHighCard($allPlayer[0]);
+
+        $data = [
+            'HighestCard' => $high
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+        );
+        return $response;
+    }
+
+
+     #[Route("/proj/api/{num<\d+>}", name: "num", methods:['GET', 'POST'])]
+    public function num(
+        int $num,
+        SessionInterface $session
+    ): Response {
+        $poker = new Poker();
+
+        $allPlayer = $session->get("allPlayer");
+        
+        $high = $poker->getHighCard($allPlayer[$num]);
+
+        $data = [
+            'HighestCard Player Computer' => $high
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+        );
+        return $response;
+    }
+
+
 }
