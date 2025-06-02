@@ -17,16 +17,16 @@ Projektet handlar om femkortspoker där fyra spelare kan spela femkortspoker. Tv
 
 ## Klona projekt repo
 
-```Klona repot
-git clone https://github.com/Daudnaw/mvc
-cd mvc
+Klona repot
+>git clone https://github.com/Daudnaw/mvc
+>cd mvc
 
-```Installera beroende
-Composer install
-npm install
+Installera beroende
+>Composer install
+>npm install
 
-```Starta lokala servern: Kom igång med webplatsen
-symfony server:start
+Starta lokala servern: Kom igång med webplatsen
+>symfony server:start
 
 
 ## Hur kommer man igång med att köra webplatsen
