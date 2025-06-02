@@ -18,8 +18,9 @@ Projektet handlar om femkortspoker där fyra spelare kan spela femkortspoker. Tv
 ## Klona projekt repo
 
 Klona repot
->-git clone https://github.com/Daudnaw/mvc
->-cd mvc
+>git clone https://github.com/Daudnaw/mvc
+
+>cd mvc
 
 Installera beroende
 >Composer install
