@@ -32,3 +32,7 @@ Starta lokala servern: Kom igång med webplatsen
 - To start the server you run the command ` php -S localhost:8888 -t public  ` which starts the server
 - Then you are ready to access the webbpage
 - Mind you that after any changes in CSS or adding an images you have to `npm run build` so that your changes can be uppdated to public
+
+```bash
+git clone https://github.com/Daudnaw/mvc
+cd mvc
