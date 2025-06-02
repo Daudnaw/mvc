@@ -16,14 +16,17 @@ Projektet är slutarbetet på en kurs objektorienterade webbteknologier inom web
 Projektet handlar om femkortspoker där fyra spelare kan spela femkortspoker. Två av spelarna är automatiserade: en kallas apa (en dum dator) medan en kallas computer (en smart dator). Två andra är människor där man har möjlighet av att betta och discarda kort för att få bästa hand som möjligt. 
 
 ## Klona projekt repo
-Klona repot
-- git clone https://github.com/Daudnaw/mvc
-- cd mvc
-Installera beroende
-- Composer install
-- npm install
-Starta lokala servern: Kom igång med webplatsen
-- symfony server:start
+
+```Klona repot
+git clone https://github.com/Daudnaw/mvc
+cd mvc
+
+```Installera beroende
+Composer install
+npm install
+
+```Starta lokala servern: Kom igång med webplatsen
+symfony server:start
 
 
 ## Hur kommer man igång med att köra webplatsen
@@ -33,6 +36,3 @@ Starta lokala servern: Kom igång med webplatsen
 - Then you are ready to access the webbpage
 - Mind you that after any changes in CSS or adding an images you have to `npm run build` so that your changes can be uppdated to public
 
-```bash
-git clone https://github.com/Daudnaw/mvc
-cd mvc
