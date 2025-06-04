@@ -93,7 +93,7 @@ class FaseTwoControllerTwig extends AbstractController
         Request $request
     ): Response
     {
-        $raise = $request->request->get('raiseOne');
+        $raise = (int) $request->request->get('raiseOne');
 
         $totalRaise = $session->get('totalRaise');
         $totalRaise += $raise;

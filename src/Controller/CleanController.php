@@ -14,27 +14,26 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class CleanController extends AbstractController
 {
    #[Route("/proj/clear", name: "proj_clear")]
-public function projClear(
-    ManagerRegistry $doctrine,
-    SessionInterface $session,
-    ): Response
-{
-    $entityManager = $doctrine->getManager();
+    public function projClear(
+        ManagerRegistry $doctrine,
+        SessionInterface $session,
+        ): Response
+    {
+        $entityManager = $doctrine->getManager();
 
-    $entityManager->createQuery('DELETE FROM App\Entity\Acount')->execute();
+        $entityManager->createQuery('DELETE FROM App\Entity\Acount')->execute();
 
-    $entityManager->createQuery('DELETE FROM App\Entity\Customer')->execute();
+        $entityManager->createQuery('DELETE FROM App\Entity\Customer')->execute();
 
-    $connection = $entityManager->getConnection();
-    $platform = $connection->getDatabasePlatform()->getName();
+        $connection = $entityManager->getConnection();
 
 
-    $connection->executeStatement("DELETE FROM sqlite_sequence WHERE name='acount'");
-    $connection->executeStatement("DELETE FROM sqlite_sequence WHERE name='customer'");
+        $connection->executeStatement("DELETE FROM sqlite_sequence WHERE name='acount'");
+        $connection->executeStatement("DELETE FROM sqlite_sequence WHERE name='customer'");
 
-    $session->clear();
-    return $this->redirectToRoute('player_create');;
-}
+        $session->clear();
+        return $this->redirectToRoute('player_create');;
+    }
 
 
 }

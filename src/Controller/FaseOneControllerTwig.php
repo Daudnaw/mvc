@@ -43,18 +43,19 @@ class FaseOneControllerTwig extends AbstractController
         Request $request
     ): Response
     {
+        $totalRaise = $session->get('totalRaise');
         $raise = $request->request->get('raiseOne');
 
         $acountOne = $session->get('acountOne');
         $acountOne = $acountOne - $raise;
         $session->set("acountOne", $acountOne);
 
-        $totalRaise = $raise + 10;
+        $monkeyRaise = $raise + 10;
         $acountMonkey = $session->get('acountMonkey');
-        $acountMonkey = $acountMonkey - $totalRaise;
+        $acountMonkey = $acountMonkey - $monkeyRaise;
 
         $session->set('acountMonkey', $acountMonkey);
-        $session->set('totalRaise', $totalRaise);
+        $session->set('totalRaise', $totalRaise + $monkeyRaise);
 
         $session->set('checkOne', '0');
         $session->set('checkTwo', '1');

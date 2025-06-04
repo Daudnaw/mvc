@@ -81,7 +81,7 @@ class FirstDisplayControllerTwig extends AbstractController
         $session->set("playerTwo", []);
         $session->set("checkOne", '1');
         $session->set("checkTwo", '0');
-
+        $session->set("totalRaise", '0');
         return $this->redirectToRoute('session_setter');
     }
 
