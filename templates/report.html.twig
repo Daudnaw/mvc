@@ -208,6 +208,77 @@
                 Metrics, scrutinizer och konstruera session för tester samt 6:C.
             </p>
             <h2 id="kmom10">kmom10</h2>
+            <h3>Krav 1-3</h3>
+            <p>
+                Jag har valt att bygga vidare på ett krotspel, femkortspoker. Jag har använt befintlig kod från kursen som grunden. Jag har byggt ytterligare två klasser: Poker och Computer. Poker ärver
+                från klass deck som innehåller allt funktionalitet för kort. Jag har en funktion som använder frekvens för en viss rank som jag då använder flera gånger för att avgöra olika typer av händer.
+                Här upplevde jag att utmaningen var att jämföra händer sen. Jag löste det genom att tilldela ett tal till varje hand och för att få unika händer så att de inte krockar, vid resultatet
+                läggs det högsta kort också med. Jag har en klass computer också som då tar ett beslut för player computer, den använder sig av klass Poker för avgöra vilket hand och utifrån det ta
+                bort kort från handen och begära nya kort.
+            </p>
+            <p>
+                När det gäller flödet av spelet används flera twig templates så att för varje runda skickas man vidare. Jag har också integrerat js i twig för att skapa en toggle function så att man kan
+                gömma kort från varandra så att det går att spela. Session används flitigt under hela spelet för att kontrollera och bestämma vad som ska synas. För att få en ny design på projekt sida har
+                jag skapat en extra base_proj.html.twig som har egen css module så att det blir mycket lätt att styra stilen. Jag har försökt att ge spelkänsla när det gäller design för spelet.
+            </p>
+            <h3>Krav 4</h3>
+            <p>
+                I det här kravet har jag 7 länkar och ett formulär. Tanken är att Api ska ge en överblick av projketet så att det går att kontrollera funktionaliteten. Första länken deal first ronud är
+                viktigt eftersom det är den som initierar alla händer. Därefter går det att testa andra länkar. Det går att se alla händer, det går att se om computer tar ett smart beslut. Med Post route
+                kan man se det största kortet av computer alltså post route skickar in computer nummer i arrayn så att man får största kortet av computer hand. Det finns en post route för apa också via
+                en post-formulär. Man kan skicka in hur många kort man vill kasta och då får man nya kort. Det finns en länk som visar alla kunder på casino också och hur mycket pengar de har på sina konto.
+                Man kan också kolla vem som är vinnare genom att titta på deras scores som motsvarar en poker hand men det förklaras mer i spelreglerna när man startar spelet.
+            </p>
+            <h3>Krav 5</h3>
+            <p>
+                För att lösa det här kravet har jag skapat två entiteter Customer och Accounts. I Customer finns det namn, adress och telefon samt customer_id vilket är primary nyckel för Customer. Den
+                används som foreign nyckel i Account för att skapa en relation mellan två entiteter. Det finns en OneToMany eller ManyToOne relation beroende på perspektivet. En kund kan ha massa med
+                Acount men en Acount kan ägas av en person. Jag gjorde det mha. manualen och det var mycket smidigt att skapa relation mellan två entiteter. Det som är värt att nämna här är tester för
+                databaser. Jag extendar KernelTestCase och sedan settar jag upp service container som används för att fetcha entitymanager. Som används för att testa funktionalitet i database såsom att
+                sätta adress för en kund osv. Jag använder entityManager för att fecha metadata som används för att droppa hela databasen och skapa entiteter utan att påverka min databas. 
+            </p>
+            <h3>Krav 6</h3>
+            <p>
+                Jag tror att jag tolkar kravet rätt. Dvs. jag skulle kunna lyfta upp moment som jag har ansträngt mig extra i och även moment som stod som optionellt förslag i exempelvis femkortspoker stod
+                det som optionellt att ha en smart computer spelare. Några av moment påverkar varandra därför jag tar dem ihop men de skulle kunna räkna som separata men jag är osäker om jag kan lista dem.
+                Jag tar upp allt som skulle kunna relevant.
+            </p>
+            <p>
+                Coverage 99% och databastester: jag har en coverage på 99% när det gäller basklasser. Jag har arbetat med femkortspoker och jag har arbetat intensivt med unittester för att testa mina
+                metoder. Jag har gjort tester för mina Repository också så att de får 100% coverage.
+            </p>
+            <p>
+                Lint nivå 8 och kodvalite 9.92: min kodkvalite enligt scrutinizer är 9.92 med endast två metoder som får betyg B. De två metoderna är besluts funktioner för bedömahand i poker och
+                beslutstagare metod för dator. Jag är okej med att de är lite tunga eftersom det finns anledning till det. Jag har också arbetat med lint nivå 8. Där exkluderar jag game.php men den har
+                inget med projektet att göra. Däremot lint nivå rymmer bra ihop med kodkvalite 9.92 enligt scrutinizer.
+            </p>
+            <p>
+                Smart computer och Två spelare: i projektbeskrivning stod det att smart computer och andra spelare var optionellt. Mitt spel spelas av 4 spelare. Två människor och två datorer. Bland datorer
+                finns det en smart spelare och en dum spelare. Apa är dum och tar slummässiga beslut medan computer är en smart spelare som bedömer sin hand och den avgöra vilka kort som ska bytas för att
+                få ett bättre hand. 
+            </p>
+            <p>
+                Utöver det har jag gjort satsningen flexibel, det vill säga spelarna kan satsa vid varje runda. Apan satsar alltid samma medan computer satsar utifrån kvalitet på sin hand.
+            </p>
+            <p>
+                Jag har också gjort sidor där man kan utöva CRUD på mina entiteter. Jag har två entiteter: Customer och Acount. Via proj-landningssida kan man klicka på relevant länk och lägga till och
+                ta bort customers. Lägga till ett nytt konto eller ändra beloppet i ett befintligt konto. 
+            </p>
+            <h3>Allmänt om projektet</h3>
+            <p>
+                Jag tyckte att projektet tog för mycket tid. Den för var stort, jag vet att det är sagt att man ska kunna styra egna ambitioner själv men jag resonerar så här att man måste ju ha tid också.
+                Det är lätt hänt att man börjar jaga för mycket då kanske skulle det kunna hjälpa om ni kunde sätta några hårda gränser (skulle förstå det är säkert mer suddigt i verkliga livet) så att
+                man vet vad man har att förhålla sig till. Tidigare på projektarbeten har jag upplevt att man har testat det som har studerats under kursens gång men nu upplevde jag att det dök upp nya
+                saker. Exempelvis testa databaser eller kontrollklasser. Vilket åt upp mycket av min tid när det gäller kontrollklasser eftersom det krockade med scrutinizer. Någon försökte hjälpa mig
+                i chatten men jag gav upp i slutet eftersom vi kom fram till att man kanske behövde degradera twig och jag vågade inte sabba som jag redan hade gjort. Projektet var roligt i sig men mycket
+                att göra på en korttid.
+            </p>
+            <h3>Allmänt om kursen</h3>
+            <p>
+                Jag tycker att under kursen har instruktioner och hjälp varit bra. Jag är nöjd med allt (kritiken ovan kan ignoreras, det skulle kunna lika väl vara endast min frustation utan substans). Jag
+                kommer att rekommendera kursen till mina kollegor men jag kommer att råda dem med att ha tålamod och ibland lite mindre sömn också. Tidskrävande kurs, även om man har lätt att förstå är det mycket
+                att göra. Jag get ett betyg på 8.
+            </p>
     </main>
 
 </div>
