@@ -9,12 +9,14 @@ use App\Card\Game;
 
 use App\Entity\Acount;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\CustomerRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class ShowDownControllerTwig extends AbstractController
 {
@@ -73,7 +75,8 @@ class ShowDownControllerTwig extends AbstractController
         $acountHouse= $entityManager->getRepository(Acount::class)->find(5);
         //checking
         $score = $session->get('score');
-        $player = ['Player One', 'Monkey Shonkey', 'Computer Shuter', 'Player Two'];
+        $playerList = $session->get('playerList');
+        $player = [$playerList[0], 'Monkey Shonkey', 'Computer Shuter', $playerList[3]];
         $acount = ['acountOne', 'acountMonkey', 'acountComputer', 'acountTwo'];
 
         $winnerScore = max($score);
@@ -111,37 +114,4 @@ class ShowDownControllerTwig extends AbstractController
        return $this->render('proj/show_down.html.twig', $data);
     }
 
-    #[Route("/proj/trial", name: "trial")]
-    public function trial(
-        SessionInterface $session
-    ): Response
-    {
-        
-        $deck = new Deck();
-        $drawn = $deck->drawCards(5);
-
-        $poker = New Poker();
-        $computer = new Computer($poker, $deck);
-        $high = $poker->getHighCard($drawn);
-        $rankFreq = $poker->getRankFreq($drawn);
-        $isPair = $poker->isPair($drawn);
-        $isTwoPair = $poker->isTwoPair($drawn);
-        $isThree = $poker->isThree($drawn);
-        $isFour = $poker->isFour($drawn);
-        $isFullHouse = $poker->isFullHouse($drawn);
-
-        $list = [$isPair, $isTwoPair, $isThree, $isFour, $isFullHouse];
-
-        
-        $afterIntell = $computer->play($drawn);
-
-        $data = [
-            "poker" => $drawn,
-            "number" => $high,
-            "rankfreq" => $list,
-            "smart" => $afterIntell
-        ];
-
-       return $this->render('proj/trial.html.twig', $data);
-    }
 }

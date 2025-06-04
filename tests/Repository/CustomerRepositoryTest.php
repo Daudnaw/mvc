@@ -43,10 +43,4 @@ class CustomerRepositoryTest extends KernelTestCase
         $this->assertEquals('Janne', $fetched->getForname());
     }
 
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        $this->entityManager?->close();
-        $this->entityManager = null;
-    }
 }

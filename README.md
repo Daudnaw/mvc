@@ -31,7 +31,7 @@ Starta lokala servern: Kom igång med webplatsen
 >symfony server:start
 
 
-## Hur kommer man igång med att köra webplatsen
+## Hur kommer man igång med att köra webplatsen för report 
 - To start the webbpage you go to bash
 - You navigate to courese repo in this case `dbwebb-kurser/mvc/me/report`
 - To start the server you run the command ` php -S localhost:8888 -t public  ` which starts the server

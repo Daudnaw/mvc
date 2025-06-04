@@ -13,13 +13,14 @@ class AccountRepositoryTest extends KernelTestCase
 
     protected function setUp(): void
     {
-        self::bootKernel();
+        self::bootKernel(); //intializing service container 
+        //retriev entitymanager for query and stuff
         $this->entityManager = self::$kernel->getContainer()->get('doctrine')->getManager();
 
-        $schemaTool = new SchemaTool($this->entityManager);
-        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
-        $schemaTool->dropSchema($metadata);
-        $schemaTool->createSchema($metadata);
+        $schemaTool = new SchemaTool($this->entityManager);//manage database for testing
+        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();//fetches metadata like entities
+        $schemaTool->dropSchema($metadata);//drops the entire database for cleanstart
+        $schemaTool->createSchema($metadata); //recreate tables from entities
     }
 
     public function testAccount(): void
@@ -69,11 +70,4 @@ class AccountRepositoryTest extends KernelTestCase
         $this->assertEquals(677, $balance);
     }
 
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-        $this->entityManager->close();
-        $this->entityManager = null;
-    }
 }

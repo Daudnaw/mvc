@@ -3,11 +3,10 @@
 {% block title %}ShowDown{% endblock %}
 
 {% block body %}
-
-<h1>Show Down</h1>
-<p>The winner is with points. {{winnerScore}} {{winnerPlayer}}</p>
-<p>you won money {{winnerPrice}}</p>
-
+<h1>{{winnerPlayer}}</h1> <p> is the winner.</p>
+<h3>You won {{winnerPrice}} kr.</h3>
+<p> You won  with winning score of {{winnerScore}}.</p>
+<p> Good work, keep playing and get addicted!</p>
 <ul>
     <li><a href="{{ path('proj_start') }}">Start again</li>
 </ul>

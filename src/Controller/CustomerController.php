@@ -209,6 +209,4 @@ final class CustomerController extends AbstractController
        return $this->redirectToRoute('app_acount');
     }
 
-
-
 }

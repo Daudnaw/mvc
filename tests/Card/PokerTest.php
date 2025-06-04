@@ -112,7 +112,7 @@ class PokerTest extends TestCase
         $this->assertTrue($this->poker->isStraight($straightFlush));
     }
 
-    public function testGetValueHigh()
+    public function testGetValueHigh(): void
     {
         $hand = [
             new Card('♠', '5'),
@@ -126,7 +126,7 @@ class PokerTest extends TestCase
         $this->assertEquals(6, $this->poker->getValueHigh($hand, 3));
     }
 
-    public function testGetValueHighTwpPair()
+    public function testGetValueHighTwpPair(): void
     {
         $hand = [
             new Card('♠', '5'),
@@ -137,5 +137,12 @@ class PokerTest extends TestCase
         ];
 
         $this->assertEquals(6, $this->poker->getValueHigh($hand, 2));
+    }
+
+    public function testEvaluateEmptyHand(): void
+    {
+        $hand = [];
+
+        $this->assertEquals(0, $this->poker->evaluateHand($hand));
     }
 }

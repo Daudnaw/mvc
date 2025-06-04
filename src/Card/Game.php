@@ -73,7 +73,7 @@ class Game extends Deck
 
     /**
      * Draw cards for the bank until its total is at 17.
-     *
+     * @SuppressWarnings("all")
      * @param CardGraphic[] $drawnCards The cards drawn in the game.
      * @param int $totalBank The current total value of the bank's hand.
      * @return array{cards: CardGraphic[], total: int} An associative array with 'cards'

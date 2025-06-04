@@ -19,7 +19,7 @@ class ComputerTest extends TestCase
         $this->deck = $this->createMock(Deck::class);
     }
 
-    public function testPlayDrawsCorrectNumberOfCards(): void
+    public function testPlayDrawsCards(): void
     {
         $computer = new Computer($this->poker, $this->deck);
 
@@ -62,7 +62,7 @@ class ComputerTest extends TestCase
         $this->assertCount(5, $newHand);
     }
 
-    public function testKeepHighCardsOnly(): void
+    public function testKeepHighCard(): void
     {
         $computer = new Computer($this->poker, $this->deck);
 
@@ -133,7 +133,7 @@ class ComputerTest extends TestCase
         $this->assertEquals([$cardA1, $cardA2, $cardA3], $kept);
     }
 
-    public function testGetCardsByRankReturnsEmptyArrayWhenNoMatch(): void
+    public function testGetCardsByRankReturn(): void
     {
         $computer = new Computer($this->poker, $this->deck);
 
@@ -185,7 +185,7 @@ class ComputerTest extends TestCase
         $this->assertEquals([$cardA1, $cardA2, $cardK1, $cardK2], $kept);
     }
 
-    public function testKeepFullHandReturnsTrueForStraight(): void
+    public function testKeepFullHandReturnst(): void
     {
         $computer = new Computer($this->poker, $this->deck);
 

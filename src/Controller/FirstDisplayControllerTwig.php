@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AcountRepository;
+use App\Repository\CustomerRepository;
 
 class FirstDisplayControllerTwig extends AbstractController
 {
@@ -43,6 +44,22 @@ class FirstDisplayControllerTwig extends AbstractController
         $session->set("acountHouse", $house);
         $session->set("countRound", 0);
 
+        return $this->redirectToRoute('player_id');
+    }
+
+     #[Route('/customer/show/id', name: 'player_id')]
+    public function showCustomerById(
+        CustomerRepository $customerRepository,
+        SessionInterface $session
+    ): Response {
+        $playerOne = $customerRepository
+            ->find(1);
+
+        $playerTwo = $customerRepository
+            ->find(4);
+
+        $playerList = [$playerOne->getForname(), 'Monkey', 'Computer', $playerTwo->getForname()];
+        $session->set('playerList', $playerList);
         return $this->redirectToRoute('proj_number');
     }
 
@@ -140,6 +157,7 @@ class FirstDisplayControllerTwig extends AbstractController
 
         $checkOne = $session->get('checkOne');
         $checkTwo = $session->get('checkTwo');
+        $playerList = $session->get('playerList');
 
         $data = [
             'playerOne' => $playerOne,
@@ -147,7 +165,9 @@ class FirstDisplayControllerTwig extends AbstractController
             'playerComputer' => $playerComputer,
             'playerTwo' => $playerTwo,
             'checkOne' => $checkOne,
-            'checkTwo' => $checkTwo
+            'checkTwo' => $checkTwo,
+            'nameOne' => $playerList[0],
+            'nameTwo' => $playerList[3]
         ];
         return $this->render('proj/check_one.html.twig', $data);
     }

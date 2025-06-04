@@ -40,6 +40,7 @@ class FaseTwoControllerTwig extends AbstractController
         }
         $playerMonkey = $deck->getString($allPlayer[1]);
         $playerComputer = $deck->getString($allPlayer[2]);
+        $playerList = $session->get('playerList');
 
         $data = [
             'playerOne' => $playerOne,
@@ -47,7 +48,9 @@ class FaseTwoControllerTwig extends AbstractController
             'playerComputer' => $playerComputer,
             'playerTwo' => $playerTwo,
             'checkOne' => $check,
-            'checkTwo' => $checkTwo
+            'checkTwo' => $checkTwo,
+            'nameOne' => $playerList[0],
+            'nameTwo' => $playerList[3]
         ];
 
         return $this->render('proj/check_two.html.twig', $data);
@@ -79,9 +82,7 @@ class FaseTwoControllerTwig extends AbstractController
     }
 
     #[Route("/proj/raise/one/two", name: "raise_one_two")]
-    public function raiseOneTwo(
-        SessionInterface $session
-    ): Response
+    public function raiseOneTwo(): Response
     {
         return $this->render('proj/raise_one_two.html.twig');
     }

@@ -16,9 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FaseOneControllerTwig extends AbstractController
 {
     #[Route("/proj/check/one/one", name: "check_one_one", methods: ['POST'])]
-    public function checkOneOne(
-        SessionInterface $session
-    ): Response
+    public function checkOneOne(): Response
     {
         return $this->redirectToRoute('check_monkey');
     }
@@ -34,9 +32,7 @@ class FaseOneControllerTwig extends AbstractController
     }
 
     #[Route("/proj/raise/one/one", name: "raise_one_one")]
-    public function raiseOneOne(
-        SessionInterface $session
-    ): Response
+    public function raiseOneOne(): Response
     {
         return $this->render('proj/raise_one_one.html.twig');
     }
@@ -139,6 +135,7 @@ class FaseOneControllerTwig extends AbstractController
 
         $selectOne = $session->get('selectOne');
         $selectTwo = $session->get('selectTwo');
+        $playerList = $session->get('playerList');
 
         $data = [
             'playerOne' => $playerOne,
@@ -148,7 +145,9 @@ class FaseOneControllerTwig extends AbstractController
             'selectOne' => $selectOne,
             'selectTwo' => $selectTwo,
             'foldOne' => $foldOne,
-            'foldTwo' => $foldTwo
+            'foldTwo' => $foldTwo,
+            'nameOne' => $playerList[0],
+            'nameTwo' => $playerList[3]
         ];
 
         return $this->render('proj/select_one.html.twig', $data);
@@ -186,9 +185,7 @@ class FaseOneControllerTwig extends AbstractController
     }
 
     #[Route("/proj/raise/two/one", name: "raise_from_two_one")]
-    public function raiseTwoOne(
-        SessionInterface $session
-    ): Response
+    public function raiseTwoOne(): Response
     {
        return $this->render('proj/raise_two_one.html.twig');
     }

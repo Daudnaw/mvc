@@ -9,9 +9,11 @@
     <input type="hidden" name="playerOne" value="playerOne">
 
     <div class="player">
-    <div class="deck-container">
+    <h3>{{nameOne}}</h3>
+    <button type="button" onclick="toggleDeck()">Toggle Cards</button>
+    <div class="deck-container" style="display: none;">
+
         {% if playerOne|length == 5 %}
-        <h3>Player One</h3>
 
         {% for value in playerOne %}
             {% set rank = value|slice(1, value|length - 3) %}
@@ -97,9 +99,13 @@
     <input type="hidden" name="playerTwo" value="playerTwo">
 
     <div class="player">
+    <h3>{{nameTwo}}</h3>
+    <button type="button" onclick="toggleTwo()">Toggle Cards</button>
+    <div class="deck-two" style="display: none;">
+
+
     <div class="deck-container">
         {% if playerTwo|length == 5 %}
-            <h3>PlayerTwo</h3>
             {% for value in playerTwo %}
                 {% set rank = value|slice(1, value|length - 3) %}
                 {% set suit = value|slice(-2, 1) %}
@@ -136,10 +142,25 @@
                     </div>
                     {% endif %}
             {% endif %}
-    
+    </div>
     </div>
 
     </form>
 </div>
 </div>
+
+<script>
+    function toggleDeck() {
+        const deck = document.querySelector('.deck-container');
+        if (deck) {
+            deck.style.display = (deck.style.display === 'none' || deck.style.display === '') ? 'block' : 'none';
+        }
+    }
+    function toggleTwo() {
+        const deck = document.querySelector('.deck-two');
+        if (deck) {
+            deck.style.display = (deck.style.display === 'none' || deck.style.display === '') ? 'block' : 'none';
+        }
+    }
+</script>
 {% endblock %}

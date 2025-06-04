@@ -4,11 +4,49 @@
 
 {% block body %}
     <h1>Projekt</h1>
-    <p>Welcome to my awesome magical homepage.</p>
-    <p>This is the current magic number</p>
-
+    <p>Welcome to play the five draw poker, click the link below to play.</p>
+    <h3>Some Rules and Functionality</h3>
+    <p>
+        There are four players in the game. Two of these players are always monkey and computer. Monkey is dum and plays randomly while
+        computer is smart and take logical decision and want to win. They check and call automatically while rest two players are 
+        humanbeings. You take your own decisions. 
+    </p>
+    <p>
+        For making the game possible to play cards are hidden from the begining and there is a toggle button. Click on it to show or hide the 
+        card. In this manner you can play with another humanbeing without showing you cards. It is not optimal but it works.
+    </p>
+    <p>
+        Game consists of four rounds logically. In the first round everyone get a hand of five cards. After that in the second round every human player has 
+        an oppertunity to check, call, fold och raise. Well, first player can only check, raise or fold while second human player can check, fold or raise because Monkey
+        is dum and always is raising. Computer take own decision either to call och raise or check. In the third round after betting can players choose to discard some or all 
+        of their cards in purpose of reaching a good hand. Human players choose by themselves while monkey and computer do that by themselves.
+        After changing the cards we enter into fourth and last round where first player can choose to call, raise or fold and at last of that round can second player only call or
+        fold. Which leads us into the show down which shows how much money one got and how much scores.
+    </p>
+    <p>
+        Ante for this game is 50kr which means everybody pays 50kr and this money goes to the house. It doesnot includes in the bettingpool. I read some rules and i beleive i may 
+        have changed them for purpose of fun. Everybody should win something. According to some rules, in the third round you may discard three or four cards. Somewhere it said you may
+        discard all of them in home games. I am allowing so all of the cards can be replaced. One more thing is burning card, since my deck is dealing with random cards so i didnot feel 
+        any need to discard the first card while replacing other cards for the players. In the real game everybody can fold but in my game monkey and computer are never folding. 
+        I started with that but it was no fun to play, it could end very  quickly so i came up with the idea of them always playing.
+    </p>
+    <h3>Scoring system</h3>
     <ul>
-        <li><a href="{{ path('proj_start') }}">Start the five draw poker</li>
+        <li>Royal Flush = 150</li>
+        <li>Straight Flush = 135 + highest card in the hand</li>
+        <li>Four of a kind = 120 + value of the one card</li>
+        <li>Full House = 105 + value of one of the card of three of kind</li>
+        <li>Flush = 90 + higest card in hand</li>
+        <li>Straight = 75 + higest card in hand</li>
+        <li>Three of a kind = 60 + value of one of the card</li>
+        <li>Two pair = 45 + value of one of the card among high value pair</li>
+        <li>A pair = 30 + value of one of the card</li>
+        <li>Highest card = value of the highest card in the hand</li>
+    </ul>
+
+    <h3>Enjoy</h3>
+    <ul>
+        <li><a href="{{ path('proj_clear') }}">Start the five draw poker</li>
     </ul>
 
 {% endblock %}

@@ -127,8 +127,6 @@ class ProjHomeControllerJson extends AbstractController
         $numCards = $request->request->get('number');
 
         $deck = new Deck();
-        $poker = new Poker();
-        $computer = new Computer($poker, $deck);
 
         $allPlayer = $session->get("allPlayer");
         $monkeyBefore = $allPlayer[2];
@@ -167,9 +165,9 @@ class ProjHomeControllerJson extends AbstractController
         SessionInterface $session
     ): Response
     {
-        $deck = new Deck();
+        //$deck = new Deck();
         $poker = new Poker();
-        $computer = new Computer($poker, $deck);
+        //$computer = new Computer($poker, $deck);
 
         $allPlayer = $session->get("allPlayer");
         $score = [];

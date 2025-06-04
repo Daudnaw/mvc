@@ -2,6 +2,11 @@
 
 namespace App\Card;
 
+/**
+ * Computer decision class.
+ *
+ * @SuppressWarnings("PHPMD.TooManyMethods")
+ */
 class Computer
 {
     private Poker $poker;  // Instance of the Poker for injecting
@@ -9,6 +14,9 @@ class Computer
 
     /**
      * Constructor to initialize the Poker and Deck objects.
+     * 
+     * @param Poker $poker An instance of the Poker
+     * @param Deck $deck An instance of the Deck
      */
     public function __construct(Poker $poker, Deck $deck)
     {
@@ -18,11 +26,9 @@ class Computer
 
     /**
      * Main method to exceute computer decision.
-     * Evaluates the hand and decides which card to discard
-     * and the add same number of cards.
      * 
-     * @param array $hand - The current hand of the computer.
-     * @return array - New hand with new cards or same hand if already strong.
+     * @param Card[] $hand The current hand of the computer.
+     * @return Card[] The new hand after replacing cards.
      */
     public function play(array $hand): array
     {
@@ -33,10 +39,9 @@ class Computer
 
     /**
      * Decides which cards to keep based on the cards in hand.
-     * Evaluate the hand and decides which cards to keep.
      *
-     * @param array $hand - The current hand of the computer.
-     * @return array - The cards that the computer decids to keep.
+     * @param Card[] $hand The current hand.
+     * @return Card[] Cards the computer chooses to keep.
      */
     public function keepCards(array $hand): array
     {
@@ -74,8 +79,8 @@ class Computer
     /**
      * Replace discarded cards by drawCards from deck by same number.
      *
-     * @param array $cardsToKeep - The cards that the computer decided to keep.
-     * @return array - The new hand after drawing cards.
+     * @param Card[] $cardsToKeep Cards to keep.
+     * @return Card[] New full hand after replacement
      */
     public function replaceCards(array $cardsToKeep): array
     {
@@ -89,8 +94,8 @@ class Computer
     /**
      * Groups the cards by their rank.
      *
-     * @param array $hand - The current hand of the player.
-     * @return array - Cards group by their rank.
+     * @param Card[] $hand The current hand.
+     * @return array<string, Card[]> Grouped cards by rank.
      */
     public function groupRanks(array $hand): array
     {
@@ -107,10 +112,10 @@ class Computer
     /**
      * Get cards of a specific rank count.
      *
-     * @param array $groups - The groups of cards by rank.
-     * @param array $freq - The frequency of each rank in the hand.
-     * @param int $count - The number of cards of the same rank to keep.
-     * @return array - The cards of the specified rank count.
+     * @param array<string, Card[]> $groups Cards grouped by rank.
+     * @param array<string, int> $freq Frequency of each rank in the hand.
+     * @param int $count The number of cards to match.
+     * @return Card[] Cards matching the given count.
      */
     public function getCardsByRank(array $groups, array $freq, int $count): array
     {
@@ -126,9 +131,9 @@ class Computer
     /**
      * Get and keep if two pairs exists.
      *
-     * @param array $groups - The groups of cards by rank.
-     * @param array $freq - The frequency of each rank in the hand.
-     * @return array - The cards containing twopairs.
+     * @param array<string, Card[]> $groups Cards grouped by rank.
+     * @param array<string, int> $freq Frequency of each rank.
+     * @return Card[] Cards forming two pairs.
      */
     public function getTwoPairs(array $groups, array $freq): array
     {
@@ -146,8 +151,8 @@ class Computer
     /**
      * Decide whether to keep all cards based on the hand strength.
      *
-     * @param array $hand - The current hand.
-     * @return bool - True if all cards should be kept, false otherwise.
+     * @param Card[] $hand The current hand.
+     * @return bool True if all cards should be kep
      */
     public function keepFullHand(array $hand): bool
     {
@@ -162,8 +167,8 @@ class Computer
     /**
      * Keep only the high cards in case no other strong hand is available.
      *
-     * @param array $hand - The current hand of the player.
-     * @return array - The high cards.
+     * @param Card[] $hand The current hand.
+     * @return Card[] High cards 13 or 14.
      */
     public function keepHighCards(array $hand): array
     {
